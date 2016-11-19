@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  window.store = store;
+
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });
+
+
+window.login = login;
+window.logout = logout;
+window.signup = signup;
+window.receiveCurrentUser = receiveCurrentUser;
+window.receiveErrors = receiveErrors;
+window.user = {username: 'ian', password: 'password'};

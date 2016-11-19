@@ -9,6 +9,7 @@ const _defaultState = {
 const SessionReducer = function(state = _defaultState, action){
   switch (action.type) {
     case SessionConstants.RECEIVE_CURRENT_USER:
+      debugger;
       const currentUser = action.currentUser;
       return merge({}, _defaultState, {currentUser});
     case SessionConstants.LOGOUT:

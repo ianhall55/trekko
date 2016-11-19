@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link, hashHistory, withRouter } from 'react-router';
+import { Link, hashHistory } from 'react-router';
+import { withRouter } from 'react-router';
 
-class LoginForm extends React.Component {
+class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: "",
       username: "",
       password: ""
     };
 
-    // this._handleDemo = this._handleDemo.bind(this);
-    // this.guestSubmit = this.guestSubmit.bind(this);
+    // this.loginDemo = this.loginDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -20,14 +21,14 @@ class LoginForm extends React.Component {
     this.redirectIfLoggedIn();
   }
 
-  componentWillUnmount(){
-    this.props.clearErrors();
-  }
-
   redirectIfLoggedIn(){
     if (this.props.loggedIn) {
       hashHistory.push("/home");
     }
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors();
   }
 
   update(fieldName){
@@ -37,51 +38,33 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.login({user});
+    this.props.signup({user});
   }
 
   renderErrors() {
+    const errorLines = this.props.errors.map( (error, i) => (
+      <li className="error" key={i}>
+        {error}
+      </li>
+    ));
+
     return(
 			<ul>
-				{this.props.errors.map( (error, i) => (
-					<li className="error" key={i}>
-						{error}
-					</li>
-				))}
+        {errorLines}
 			</ul>
 		);
 
   }
 
-  // _handleDemo() {
-	// 	let that = this;
-  //   let i = 1;
-  //   const demoUser = "guest";
-  //
-  //   const intervalID = setInterval(function () {
-  //     if (i < 6) {
-	// 			that.setState({ username: demoUser.slice(0, i) });
-  //     } else if (i === 6) {
-	// 			that.setState({ password: "password" });
-  //     } else {
-  //       window.clearInterval(intervalID);
-  //       that.guestSubmit();
-  //     }
-  //     i++;
-  //   }, 150);
-	// 	this.demo = false;
-  //
-	// }
+  // loginDemo() {
+  //   const user = { username: 'guest', password: 'password' };
+  //   this.props.login({user});
+  // }
   // <input type="button"
   //            value="Log in with Demo"
   //            className="guest-login"
-  //            onClick={this._handleDemo} />
-  // <br/>
-  //
-	// guestSubmit(){
-	// 	const user = this.state;
-	// 	this.props.login({user});
-	// }
+  //            onClick={this.loginDemo} />
+
 
   render() {
 
@@ -92,29 +75,38 @@ class LoginForm extends React.Component {
 					<br/>
 					{ this.renderErrors() }
 					<div className="login-form">
-						<br />
-						<label> Username:</label>
+
+            <br />
+						<label> Email:
+							<input type="text"
+								value={this.state.email}
+								onChange={this.update("email")}
+								className="login-input" />
+						</label>
+
+            <br />
+						<label> Username:
 							<input type="text"
 								value={this.state.username}
 								onChange={this.update("username")}
 								className="login-input" />
-
+						</label>
 
 						<br />
-						<label> Password: </label>
+						<label> Password:
 							<input type="password"
 								value={this.state.password}
 								onChange={this.update("password")}
 								className="login-input" />
-
+						</label>
 
 						<br />
-						<input className="login-submit" type="submit" value="LOGIN" />
+						<input className="login-submit" type="submit" value="GET STARTED" />
             <br />
-            
-            <label className="form-footer">
-              {"Don't have an account?"} { <Link to="/signup">Sign up</Link> }
-            </label>
+              <label className="form-footer">
+                Already have an account? { <Link to="/login">Log in</Link> }
+              </label>
+
 					</div>
 				</form>
 			</div>
@@ -123,4 +115,4 @@ class LoginForm extends React.Component {
 }
 
 
-export default withRouter(LoginForm);
+export default withRouter(SignupForm);
