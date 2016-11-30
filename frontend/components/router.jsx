@@ -5,7 +5,8 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import LoginFormContainer from './login_form/login_form_container.jsx';
 import SignupFormContainer from './signup_form/signup_form_container.jsx';
-import HomeContainer from './home/home_container.jsx';
+
+import Corkboard from './corkboard/corkboard_container.jsx';
 
 class AppRouter extends React.Component{
   constructor(props){
@@ -35,7 +36,7 @@ class AppRouter extends React.Component{
         <Route path="/" component={ App } />
         <Route path="/login" component={ LoginFormContainer } onEnter={this._redirectIfLoggedIn}/>
         <Route path="/signup" component={ SignupFormContainer } onEnter={this._redirectIfloggedIn } />
-        <Route path="/home" component={ HomeContainer }  />
+        <Route path="/home" component={ Corkboard }  />
   		</Router>
   	);
   }

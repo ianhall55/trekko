@@ -1,7 +1,7 @@
 import React from 'react';
 import MapContainer from '../map_component/map_container.jsx';
 
-export default class Home extends React.Component {
+export default class Trip extends React.Component {
   constructor(props){
     super(props);
   }

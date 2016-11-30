@@ -1,0 +1,20 @@
+
+
+.cork-main {
+  width: 100%;
+  height: 100vh;
+  background-image: url("http://res.cloudinary.com/de79besd8/image/upload/v1480453276/trekko/fzm-corkboard.texture-01.jpg");
+  background-size: cover;
+  background-position: center 85%;
+}
+
+.header {
+  height: 50px;
+  background-color: #6BBAA7;
+
+}
+
+.header h1 {
+  color: 'white';
+
+}
