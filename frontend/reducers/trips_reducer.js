@@ -3,7 +3,7 @@ import { merge } from 'lodash';
 import {hashHistory} from 'react-router';
 
 const _defaultState = {
-  currentUser: null
+  trip: {}
 };
 
 const SessionReducer = function(state = _defaultState, action){
@@ -11,8 +11,6 @@ const SessionReducer = function(state = _defaultState, action){
     case SessionConstants.RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;
       return merge({}, _defaultState, {currentUser});
-    case SessionConstants.LOGOUT:
-      return _defaultState;
     default:
       return state;
   }

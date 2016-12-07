@@ -25,7 +25,7 @@ class SplashPage extends Component {
   destinationEntered(){
     var place = this.autocomplete.getPlace();
     window.place = place;
-
+    this.props.receivePlace(place);
   }
 
   loginRedirect(e){
