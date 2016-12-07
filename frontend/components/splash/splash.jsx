@@ -7,8 +7,26 @@ class SplashPage extends Component {
     super(props);
 
     this.loginRedirect = this.loginRedirect.bind(this);
+    this.destinationEntered = this.destinationEntered.bind(this);
   }
 
+  componentDidMount(){
+    const autocompleteInput = this.refs.autocomplete;
+
+    const autocompleteOptions = {
+      types: ['geocode']
+    };
+
+    this.autocomplete = new google.maps.places.Autocomplete(autocompleteInput, autocompleteOptions);
+
+    this.autocomplete.addListener('place_changed', this.destinationEntered);
+  }
+
+  destinationEntered(){
+    var place = this.autocomplete.getPlace();
+    window.place = place;
+
+  }
 
   loginRedirect(e){
     e.preventDefault();
@@ -20,6 +38,9 @@ class SplashPage extends Component {
       <div className="splash-main">
         <h1>Trekko Splash!</h1>
         <input type="button" onClick={this.loginRedirect} className="splash-button" value='Login'/>
+        <br/>
+        <input id="pac-input" ref="autocomplete"
+          className="controls" type="text" placeholder="Start typing here" />
       </div>
     );
   }
