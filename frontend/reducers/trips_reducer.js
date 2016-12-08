@@ -10,10 +10,12 @@ const _defaultState = {
 const TripsReducer = function(state = _defaultState, action){
   switch (action.type) {
     case TripConstants.PENDING_TRIP:
-      const pendingTrip = action.trip;
+      let pendingTrip = action.trip;
       return merge({}, _defaultState, {pendingTrip});
-    case TripConstants.CREATE_TRIP:
+    case TripConstants.RECEIVE_TRIP:
+    debugger;
       const trip = action.trip;
+      hashHistory.push(`/plan-trip/${trip.id}`);
       return merge({}, _defaultState, {trip});
     default:
       return state;

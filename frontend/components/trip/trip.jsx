@@ -6,6 +6,10 @@ export default class Trip extends React.Component {
     super(props);
   }
 
+  componentDidMount(){
+    debugger;
+    const v = 1;
+  }
 
   render(){
     return(

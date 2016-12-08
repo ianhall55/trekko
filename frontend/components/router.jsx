@@ -39,7 +39,7 @@ class AppRouter extends React.Component{
         <Route path="/login" component={ LoginFormContainer } onEnter={this._redirectIfLoggedIn}/>
         <Route path="/signup" component={ SignupFormContainer } onEnter={this._redirectIfloggedIn } />
         <Route path="/tripboard" component={ Corkboard }  />
-        <Route path="/plan-trip" component={ TripContainer } />
+        <Route path="/plan-trip/:tripId" component={ TripContainer } />
   		</Router>
   	);
   }

@@ -2,7 +2,7 @@
 export const addTrip = function(trip, success, error) {
   $.ajax({
     method: 'POST',
-    url: 'api/trip',
+    url: 'api/trips',
     data: trip,
     success,
     error

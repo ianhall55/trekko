@@ -74,9 +74,9 @@ class SplashPage extends Component {
     };
     if (this.props.currentUser) {
       trip.user_id = this.props.currentUser.id;
-      this.props.createTrip(trip);
+      this.props.createTrip({trip});
     } else {
-      this.props.pendingTrip(trip);
+      this.props.pendingTrip({trip});
       this.setState({
         locationModalIsOpen: false,
         signupModalIsOpen: true

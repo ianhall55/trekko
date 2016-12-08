@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many: :users
+  has_many :users
 
   def password=(password)
     @password = password
