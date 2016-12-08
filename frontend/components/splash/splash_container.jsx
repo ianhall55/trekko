@@ -6,12 +6,14 @@ import { pendingTrip, createTrip } from '../../actions/trips_actions';
 
 
 const mapStateToProps = state => ({
-  place: state.places.currentPlace
+  place: state.places.currentPlace,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
   receivePlace: (place) => dispatch(receivePlace(place)),
-  pendingTrip: (trip) => dispatch(pendingTrip(trip))
+  pendingTrip: (trip) => dispatch(pendingTrip(trip)),
+  createTrip: (trip) => dispatch(createTrip(trip)),
 });
 
 export default connect(

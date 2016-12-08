@@ -9,12 +9,14 @@ class SplashPage extends Component {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      locationModalIsOpen: false,
+      signupModalIsOpen: false
     };
 
     this.loginRedirect = this.loginRedirect.bind(this);
     this.destinationEntered = this.destinationEntered.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.closeLocationModal = this.closeLocationModal.bind(this);
+    this.createTrip = this.createTrip.bind(this);
   }
 
   componentDidMount(){
@@ -34,16 +36,21 @@ class SplashPage extends Component {
 
     if (place) {
       this.props.receivePlace(place);
-      this.setState({modalIsOpen: true});
+      this.setState({locationModalIsOpen: true});
     }
   }
 
-  closeModal(e){
+  closeLocationModal(e){
     e.preventDefault();
     $("#pac-input").val("");
     this.setState({
-      modalIsOpen: false
+      locationModalIsOpen: false
     });
+  }
+
+  closeSignupModal(e){
+    e.preventDefault();
+
   }
 
   loginRedirect(e){
@@ -51,16 +58,29 @@ class SplashPage extends Component {
     hashHistory.push('/login');
   }
 
+  signupRedirect(e){
+    e.preventDefault();
+    hashHistory.push('/signup');
+  }
+
   createTrip(e){
     e.preventDefault();
+
     let trip = {
       name: this.props.place.name,
       lat: this.props.place.geometry.location.lat(),
       lng: this.props.place.geometry.location.lng(),
+      user_id: undefined
     };
-    if (this.props.currentUser.id) {
+    if (this.props.currentUser) {
       trip.user_id = this.props.currentUser.id;
       this.props.createTrip(trip);
+    } else {
+      this.props.pendingTrip(trip);
+      this.setState({
+        locationModalIsOpen: false,
+        signupModalIsOpen: true
+      });
     }
 
   }
@@ -75,14 +95,25 @@ class SplashPage extends Component {
     return(
       <div className="splash-page">
         <Modal
-          isOpen={this.state.modalIsOpen}
+          isOpen={this.state.locationModalIsOpen}
           onRequestClost={this.closeModal}
           contentLabel="Confirm Trip"
           style={ModalStyle.splashModal}
           >
           <h2>Do you want to create a trip to {place}?</h2>
           <button onClick={this.createTrip}>Confirm</button>
-          <button onClick={this.closeModal}>Cancel</button>
+          <button onClick={this.closeLocationModal}>Cancel</button>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.signupModalIsOpen}
+          onRequestClost={this.closeSignupModal}
+          contentLabel="Confirm Trip"
+          style={ModalStyle.splashModal}
+          >
+          <h2>You have to signin first</h2>
+          <button onClick={this.signupRedirect}>Signup</button>
+          <button onClick={this.loginRedirect}>Login</button>
         </Modal>
         <div className="splash-main">
 

@@ -23,7 +23,13 @@ class SignupForm extends React.Component {
 
   redirectIfLoggedIn(){
     if (this.props.loggedIn) {
-      hashHistory.push("/home");
+      if (this.props.pendingTrip) {
+        let trip = this.props.pendingTrip;
+        trip.user_id = this.props.currentUser.id;
+        this.props.createTrip(this.props.pendingTrip);
+      } else {
+        hashHistory.push("/tripboard");
+      }
     }
   }
 

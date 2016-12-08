@@ -1,5 +1,5 @@
 import { TripConstants, receiveTrip} from '../actions/trips_actions';
-import { addTrip } from '../util/session_api_util';
+import { addTrip } from '../util/trip_api_util';
 
 import {hashHistory} from 'react-router';
 

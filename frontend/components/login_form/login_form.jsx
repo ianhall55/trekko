@@ -26,7 +26,13 @@ class LoginForm extends React.Component {
 
   redirectIfLoggedIn(){
     if (this.props.loggedIn) {
-      hashHistory.push("/home");
+      if (this.props.pendingTrip) {
+        let trip = this.props.pendingTrip;
+        trip.user_id = this.props.currentUser.id;
+        this.props.createTrip(this.props.pendingTrip);
+      } else {
+        hashHistory.push("/tripboard");
+      }
     }
   }
 
@@ -111,7 +117,7 @@ class LoginForm extends React.Component {
 						<br />
 						<input className="login-submit" type="submit" value="LOGIN" />
             <br />
-            
+
             <label className="form-footer">
               {"Don't have an account?"} { <Link to="/signup">Sign up</Link> }
             </label>

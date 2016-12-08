@@ -23,7 +23,6 @@ const SessionMiddleware = ({getState, dispatch}) => next => action => {
         const errors = xhr.responseJSON;
         dispatch(receiveLoginErrors(errors));
       };
-      debugger;
       login(action.user, loginSuccess, errorCallback);
       return next(action);
     case SessionConstants.LOGOUT:
