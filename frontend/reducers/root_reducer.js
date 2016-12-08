@@ -2,11 +2,14 @@ import { combineReducers } from 'redux';
 import FormsReducer from './forms_reducer';
 import SessionReducer from './session_reducer';
 import PlacesReducer from './places_reducer';
+import TripsReducer from './trips_reducer';
+
 
 const RootReducer = combineReducers({
   forms: FormsReducer,
   session: SessionReducer,
-  places: PlacesReducer
+  places: PlacesReducer,
+  trips: TripsReducer,
 });
 
 export default RootReducer;

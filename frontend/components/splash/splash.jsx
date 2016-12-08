@@ -56,9 +56,13 @@ class SplashPage extends Component {
     let trip = {
       name: this.props.place.name,
       lat: this.props.place.geometry.location.lat(),
-      lng: this.props.place.geometry.location.lng()
+      lng: this.props.place.geometry.location.lng(),
     };
-    this.createTrip(trip);
+    if (this.props.currentUser.id) {
+      trip.user_id = this.props.currentUser.id;
+      this.props.createTrip(trip);
+    }
+
   }
 
   render(){
@@ -77,7 +81,7 @@ class SplashPage extends Component {
           style={ModalStyle.splashModal}
           >
           <h2>Do you want to create a trip to {place}?</h2>
-          <button onClick={this.closeModal}>Confirm</button>
+          <button onClick={this.createTrip}>Confirm</button>
           <button onClick={this.closeModal}>Cancel</button>
         </Modal>
         <div className="splash-main">
