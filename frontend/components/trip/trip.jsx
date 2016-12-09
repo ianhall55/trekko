@@ -20,7 +20,7 @@ export default class Trip extends React.Component {
 
   componentWillReceiveProps(nextProps){
 
-    if (nextProps.params.tripId != this.props.trip.id) {
+    if (this.props.trip.id && (nextProps.params.tripId != this.props.trip.id)) {
       this.props.fetchTrip(nextProps.params.tripId);
     }
   }
