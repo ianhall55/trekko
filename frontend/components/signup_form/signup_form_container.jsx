@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   signup: (user) => dispatch(signup(user)),
   login: (user) => dispatch(login(user)),
   clearErrors: () => dispatch(clearErrors()),
-  createTrip: () => dispatch(createTrip()),
+  createTrip: (trip) => dispatch(createTrip(trip)),
 });
 
 export default connect(

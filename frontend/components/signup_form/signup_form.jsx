@@ -24,9 +24,9 @@ class SignupForm extends React.Component {
   redirectIfLoggedIn(){
     if (this.props.loggedIn) {
       if (this.props.pendingTrip) {
-        let trip = this.props.pendingTrip;
+        let trip = this.props.pendingTrip.trip;
         trip.user_id = this.props.currentUser.id;
-        this.props.createTrip(this.props.pendingTrip);
+        this.props.createTrip({trip});
       } else {
         hashHistory.push("/tripboard");
       }

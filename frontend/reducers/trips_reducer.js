@@ -13,10 +13,11 @@ const TripsReducer = function(state = _defaultState, action){
       let pendingTrip = action.trip;
       return merge({}, _defaultState, {pendingTrip});
     case TripConstants.RECEIVE_TRIP:
-    debugger;
       const trip = action.trip;
-      hashHistory.push(`/plan-trip/${trip.id}`);
+      // hashHistory.push(`/plan-trip/${trip.id}`);
       return merge({}, _defaultState, {trip});
+    case TripConstants.CLEAR_TRIP:
+      return merge({}, _defaultState);
     default:
       return state;
   }

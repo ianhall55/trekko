@@ -8,3 +8,12 @@ export const addTrip = function(trip, success, error) {
     error
   });
 };
+
+export const fetchTrip = function(tripId, success, error) {
+  $.ajax({
+    method: 'GET',
+    url: `api/trips/${tripId}`,
+    success,
+    error
+  });
+};
