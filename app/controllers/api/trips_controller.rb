@@ -8,8 +8,10 @@ class Api::TripsController < ApplicationController
   end
 
   def create
-    
+
     @trip = Trip.new(trip_params)
+    @trip.viewport = params[:trip][:viewport]
+    @trip.viewport.each {|k,v| @trip.viewport[k] = v.to_f}
     if @trip.save
 
       render :show
@@ -19,7 +21,7 @@ class Api::TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:id, :name, :lat, :lng, :user_id, :date)
+    params.require(:trip).permit(:id, :name, :lat, :lng, :viewport, :user_id, :date)
   end
 
 end

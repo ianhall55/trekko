@@ -70,6 +70,12 @@ class SplashPage extends Component {
       name: this.props.place.name,
       lat: this.props.place.geometry.location.lat(),
       lng: this.props.place.geometry.location.lng(),
+      viewport: {
+        north: this.props.place.geometry.viewport.f.b,
+        south: this.props.place.geometry.viewport.f.f,
+        east: this.props.place.geometry.viewport.b.f,
+        west: this.props.place.geometry.viewport.b.b
+      },
       user_id: undefined
     };
     if (this.props.currentUser) {

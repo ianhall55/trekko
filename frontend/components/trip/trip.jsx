@@ -27,17 +27,25 @@ export default class Trip extends React.Component {
 
 
   render(){
-    return(
-      <div>
-        <h1>Hi {this.props.currentUser.username}!</h1>
+    if (this.props.trip.id) {
+      return(
+        <div>
+          <h1>Hi {this.props.currentUser.username}!</h1>
 
-        <h2>{this.props.trip.name}</h2>
+          <h2>{this.props.trip.name}</h2>
 
-        <h3>Map</h3>
+          <h3>Map</h3>
 
-        <MapContainer />
-      </div>
-    );
+          <MapContainer />
+        </div>
+      );
+    } else {
+      return(
+        <div>
+          <h1>Loading...</h1>
+        </div>
+      );
+    }
   }
 
 }

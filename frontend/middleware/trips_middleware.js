@@ -10,7 +10,10 @@ const SessionMiddleware = ({getState, dispatch}) => next => action => {
 
   switch (action.type) {
     case TripConstants.CREATE_TRIP:
-      const createTripSuccess = (data) => (dispatch(receiveTrip(data)));
+      const createTripSuccess = (data) => {
+        dispatch(receiveTrip(data));
+        hashHistory.push(`plan-trip/${data.id}`);
+      };
       errorCallback = (xhr) => {
         const errors = xhr.responseJSON;
         // dispatch(receiveSignupErrors(errors));
