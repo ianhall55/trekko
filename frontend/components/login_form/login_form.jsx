@@ -25,9 +25,8 @@ class LoginForm extends React.Component {
   }
 
   redirectIfLoggedIn(){
-
     if (this.props.loggedIn) {
-      if (this.props.pendingTrip) {
+      if (this.props.pendingTrip.name) {
         let trip = this.props.pendingTrip.trip;
         trip.user_id = this.props.currentUser.id;
         this.props.createTrip({trip});

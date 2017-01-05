@@ -53,16 +53,6 @@ class SplashPage extends Component {
 
   }
 
-  loginRedirect(e){
-    e.preventDefault();
-    hashHistory.push('/login');
-  }
-
-  signupRedirect(e){
-    e.preventDefault();
-    hashHistory.push('/signup');
-  }
-
   createTrip(e){
     e.preventDefault();
 
@@ -121,14 +111,14 @@ class SplashPage extends Component {
           <button onClick={this.signupRedirect}>Signup</button>
           <button onClick={this.loginRedirect}>Login</button>
         </Modal>
-        <div className="splash-main">
 
+        <div className="splash-main">
+          <Header/>
           <h1>Trekko Splash!</h1>
-          <input type="button" onClick={this.loginRedirect} className="splash-button" value='Login'/>
-          <br/>
           <input id="pac-input" ref="autocomplete"
             className="controls" type="text" placeholder="Where do you want to go?" />
         </div>
+
       </div>
     );
   }
