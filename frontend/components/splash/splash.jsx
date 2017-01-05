@@ -3,6 +3,8 @@ import {hashHistory} from 'react-router';
 import { withRouter } from 'react-router';
 import Modal from 'react-modal';
 import ModalStyle from '../modal_styles';
+import Header from '../header/header_container';
+
 
 class SplashPage extends Component {
   constructor(props){
@@ -51,6 +53,16 @@ class SplashPage extends Component {
   closeSignupModal(e){
     e.preventDefault();
 
+  }
+
+  loginRedirect(e){
+    e.preventDefault();
+    hashHistory.push('/login');
+  }
+
+  signupRedirect(e){
+    e.preventDefault();
+    hashHistory.push('/signup');
   }
 
   createTrip(e){

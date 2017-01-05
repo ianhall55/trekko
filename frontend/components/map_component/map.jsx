@@ -28,7 +28,7 @@ export default class MapComponent extends React.Component{
       center: uluru
     });
 
-    // this.map.fitBounds(this.props.trip.viewport);
+    this.map.fitBounds(this.props.trip.viewport);
   }
 
   render(){

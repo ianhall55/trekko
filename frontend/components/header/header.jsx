@@ -22,7 +22,9 @@ export default class Header extends Component {
 
 
   render(){
-    if (this.currentUser.id) {
+    
+
+    if (this.props.currentUser) {
       return(
         <div className='header'>
           <h1>trekko</h1>

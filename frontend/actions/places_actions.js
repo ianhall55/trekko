@@ -1,6 +1,5 @@
 export const PlaceConstants = {
-  RECEIVE_PLACE: "RECEIVE_PLACE",
-  PENDING_TRIP: "PENDING_TRIP"
+  RECEIVE_PLACE: "RECEIVE_PLACE"
 };
 
 export const receivePlace = place => ({
