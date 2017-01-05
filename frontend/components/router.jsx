@@ -6,7 +6,7 @@ import App from './app';
 import LoginFormContainer from './login_form/login_form_container.jsx';
 import SignupFormContainer from './signup_form/signup_form_container.jsx';
 import SplashContainer from './splash/splash_container.jsx';
-import Corkboard from './corkboard/corkboard_container.jsx';
+import CorkboardContainer from './corkboard/corkboard_container.jsx';
 import TripContainer from './trip/trip_container.jsx';
 
 
@@ -27,7 +27,7 @@ class AppRouter extends React.Component{
   _redirectIfLoggedIn(nextState, replace) {
     const currentUser = this.props.currentUser;
     if (currentUser){
-      replace('/tripboard');
+      replace('/corkboard');
     }
   }
 
@@ -36,10 +36,10 @@ class AppRouter extends React.Component{
   	return (
   		<Router history={hashHistory}>
         <Route path="/" component={ SplashContainer } />
-        <Route path="/login" component={ LoginFormContainer } onEnter={this._redirectIfLoggedIn}/>
-        <Route path="/signup" component={ SignupFormContainer } onEnter={this._redirectIfloggedIn } />
-        <Route path="/tripboard" component={ Corkboard }  />
-        <Route path="/plan-trip/:tripId" component={ TripContainer } />
+        <Route path="/login" component={ LoginFormContainer } onEnter={this.redirectIfLoggedIn} />
+        <Route path="/signup" component={ SignupFormContainer } onEnter={this.redirectIfLoggedIn} />
+        <Route path="/corkboard" component={ CorkboardContainer }  onEnter={this.ensureLoggedIn} />
+        <Route path="/plan-trip/:tripId" component={ TripContainer }  />
   		</Router>
   	);
   }

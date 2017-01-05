@@ -8,6 +8,7 @@ export default class Header extends Component {
 
     this.loginRedirect = this.loginRedirect.bind(this);
     this.signupRedirect = this.signupRedirect.bind(this);
+    this.logoutRedirect = this.logoutRedirect.bind(this);
   }
 
   loginRedirect(e){
@@ -20,15 +21,21 @@ export default class Header extends Component {
     hashHistory.push('/signup');
   }
 
+  logoutRedirect(e){
+    e.preventDefault();
+    this.props.logout();
+    hashHistory.push("/");
+  }
+
 
   render(){
-    
+
 
     if (this.props.currentUser) {
       return(
         <div className='header'>
           <h1>trekko</h1>
-          <input type="button" onClick={this.props.logout} className="header-button" value="Logout"/>
+          <input type="button" onClick={this.logoutRedirect} className="header-button" value="Logout"/>
 
         </div>
       );

@@ -1,5 +1,7 @@
 import React from 'react';
 import MapContainer from '../map_component/map_container.jsx';
+import Header from '../header/header_container';
+
 
 export default class Trip extends React.Component {
   constructor(props){
@@ -30,6 +32,7 @@ export default class Trip extends React.Component {
     if (this.props.trip.id) {
       return(
         <div>
+          <Header/>
           <h1>Hi {this.props.currentUser.username}!</h1>
 
           <h2>{this.props.trip.name}</h2>
