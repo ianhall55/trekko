@@ -17,3 +17,13 @@ export const fetchTrip = function(tripId, success, error) {
     error
   });
 };
+
+export const fetchTripsForUser = function(userId, success, error) {
+  $.ajax({
+    method: 'GET',
+    url: `api/trips`,
+    data: userId,
+    success,
+    error
+  });
+};

@@ -1,8 +1,10 @@
 export const TripConstants = {
   CREATE_TRIP: "CREATE_TRIP",
   RECEIVE_TRIP: "RECEIVE_TRIP",
+  RECEIVE_TRIPS_FOR_USER: "RECEIVE_TRIPS_FOR_USER",
   PENDING_TRIP: "PENDING_TRIP",
   FETCH_TRIP: "FETCH_TRIP",
+  FETCH_TRIPS_FOR_USER: "FETCH_TRIPS_FOR_USER",
   CLEAR_TRIP: "CLEAR_TRIP"
 };
 
@@ -16,6 +18,11 @@ export const receiveTrip = trip => ({
   trip
 });
 
+export const receiveTripsForUser = trips => ({
+  type: TripConstants.RECEIVE_TRIPS_FOR_USER,
+  trips
+});
+
 export const pendingTrip = trip => ({
   type: TripConstants.PENDING_TRIP,
   trip
@@ -24,6 +31,11 @@ export const pendingTrip = trip => ({
 export const fetchTrip = tripId => ({
   type: TripConstants.FETCH_TRIP,
   tripId
+});
+
+export const fetchTripsForUser = userId => ({
+  type: TripConstants.FETCH_TRIPS_FOR_USER,
+  userId
 });
 
 export const clearTrip = () => ({

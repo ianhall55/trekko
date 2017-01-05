@@ -1,8 +1,6 @@
-import { TripConstants, receiveTrip} from '../actions/trips_actions';
-import { addTrip } from '../util/trip_api_util';
-
+import { TripConstants, receiveTrip, receiveTripsForUser } from '../actions/trips_actions';
+import { addTrip, fetchTrip, fetchTripsForUser } from '../util/trip_api_util';
 import {hashHistory} from 'react-router';
-import { fetchTrip } from '../util/trip_api_util';
 
 
 const SessionMiddleware = ({getState, dispatch}) => next => action => {
@@ -24,11 +22,16 @@ const SessionMiddleware = ({getState, dispatch}) => next => action => {
       const fetchTripSuccess = (data) => (dispatch(receiveTrip(data)));
       errorCallback = (xhr) => {
         const errors = xhr.responseJSON;
-        // dispatch(receiveSignupErrors(errors));
+
       };
       fetchTrip(action.tripId, fetchTripSuccess, errorCallback);
       return next(action);
-
+    case TripConstants.FETCH_TRIPS_FOR_USER:
+      const fetchTripsForUserSuccess = (data) => (dispatch(receiveTripsForUser(data)));
+      errorCallback = (xhr) => {
+        const errors = xhr.responseJSON;
+      };
+      fetchTripsForUser(action.userId);
     default:
       return next(action);
   }

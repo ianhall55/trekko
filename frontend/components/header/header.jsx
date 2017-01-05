@@ -9,6 +9,18 @@ export default class Header extends Component {
     this.loginRedirect = this.loginRedirect.bind(this);
     this.signupRedirect = this.signupRedirect.bind(this);
     this.logoutRedirect = this.logoutRedirect.bind(this);
+    this.corkboardRedirect = this.corkboardRedirect.bind(this);
+    this.homeRedirect = this.homeRedirect.bind(this);
+  }
+
+  homeRedirect(e){
+    e.preventDefault();
+    hashHistory.push('/');
+  }
+
+  corkboardRedirect(e){
+    e.preventDefault();
+    hashHistory.push('/corkboard');
   }
 
   loginRedirect(e){
@@ -35,6 +47,8 @@ export default class Header extends Component {
       return(
         <div className='header'>
           <h1>trekko</h1>
+          <input type="button" onClick={this.homeRedirect} className="header-button" value="Home"/>
+          <input type="button" onClick={this.corkboardRedirect} className="header-button" value="Corkboard"/>
           <input type="button" onClick={this.logoutRedirect} className="header-button" value="Logout"/>
 
         </div>

@@ -1,5 +1,9 @@
 class Api::TripsController < ApplicationController
 
+  def index
+    debugger;
+    @trips = Trip.where(user_id: params[:userId])
+  end
 
   def show
     @trip = Trip.find(params[:id])

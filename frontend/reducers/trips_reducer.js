@@ -4,7 +4,8 @@ import {hashHistory} from 'react-router';
 
 const _defaultState = {
   trip: {},
-  pendingTrip: {}
+  pendingTrip: {},
+  trips: []
 };
 
 const TripsReducer = function(state = _defaultState, action){
@@ -16,6 +17,9 @@ const TripsReducer = function(state = _defaultState, action){
       const trip = action.trip;
       // hashHistory.push(`/plan-trip/${trip.id}`);
       return merge({}, _defaultState, {trip});
+    case TripConstants.RECEIVE_TRIPS_FOR_USER:
+      const trips = action.trips;
+      return merge({}, _defaultState, {trips});
     case TripConstants.CLEAR_TRIP:
       return merge({}, _defaultState);
     default:

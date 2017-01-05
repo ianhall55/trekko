@@ -12,13 +12,15 @@ class SplashPage extends Component {
 
     this.state = {
       locationModalIsOpen: false,
-      signupModalIsOpen: false
+      signupModalIsOpen: false,
+      warningModalIsOpen: false
     };
 
     this.loginRedirect = this.loginRedirect.bind(this);
     this.destinationEntered = this.destinationEntered.bind(this);
     this.closeLocationModal = this.closeLocationModal.bind(this);
     this.createTrip = this.createTrip.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount(){
@@ -36,9 +38,12 @@ class SplashPage extends Component {
   destinationEntered(){
     var place = this.autocomplete.getPlace();
 
-    if (place) {
+    if (place.geometry) {
       this.props.receivePlace(place);
       this.setState({locationModalIsOpen: true});
+    } else {
+      this.setState({warningModalIsOpen: true});
+      $(".close-modal").select();
     }
   }
 
@@ -50,9 +55,12 @@ class SplashPage extends Component {
     });
   }
 
-  closeSignupModal(e){
+  closeModal(e){
     e.preventDefault();
-
+    this.setState({
+      warningModalIsOpen: false
+    });
+    $("#pac-input").select();
   }
 
   loginRedirect(e){
@@ -122,6 +130,16 @@ class SplashPage extends Component {
           <h2>You have to signin first</h2>
           <button onClick={this.signupRedirect}>Signup</button>
           <button onClick={this.loginRedirect}>Login</button>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.warningModalIsOpen}
+          onRequestClost={this.closeModal}
+          contentLabel="Confirm Trip"
+          style={ModalStyle.splashModal}
+          >
+          <h2>Please choose location from dropdown</h2>
+          <button className="close-modal" onClick={this.closeModal}>Close</button>
         </Modal>
 
         <div className="splash-main">

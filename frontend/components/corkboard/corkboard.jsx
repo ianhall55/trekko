@@ -6,8 +6,15 @@ export default class Corkboard extends React.Component {
     super(props);
   }
 
+  componentDidMount(){
+    debugger;
+    if (this.props.currentUser){
+      this.props.fetchTripsForUser(this.props.currentUser.id);
+    }
+  }
 
   render(){
+    debugger;
     return(
       <div className='cork-page'>
         <Header/>
