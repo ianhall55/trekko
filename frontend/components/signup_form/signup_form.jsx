@@ -28,7 +28,7 @@ class SignupForm extends React.Component {
         trip.user_id = this.props.currentUser.id;
         this.props.createTrip({trip});
       } else {
-        hashHistory.push("/corkboard");
+        hashHistory.push("/");
       }
     }
   }

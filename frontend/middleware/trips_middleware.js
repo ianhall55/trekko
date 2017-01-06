@@ -31,7 +31,7 @@ const SessionMiddleware = ({getState, dispatch}) => next => action => {
       errorCallback = (xhr) => {
         const errors = xhr.responseJSON;
       };
-      fetchTripsForUser(action.userId);
+      fetchTripsForUser(action.userId, fetchTripsForUserSuccess, errorCallback);
     default:
       return next(action);
   }

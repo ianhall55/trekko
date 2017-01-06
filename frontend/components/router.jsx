@@ -18,28 +18,30 @@ class AppRouter extends React.Component{
   }
 
   _ensureLoggedIn(nextState, replace) {
-    const currentUser = this.props.currentUser;
+    const currentUser = store.getState().session.currentUser;
     if(!currentUser) {
       replace('/login');
     }
   }
 
-  _redirectIfLoggedIn(nextState, replace) {
-    const currentUser = this.props.currentUser;
-    if (currentUser){
-      replace('/corkboard');
-    }
-  }
+  // #likely won't need this method, redirect logic already in login, signup forms
+  //
+  // _redirectIfLoggedIn(nextState, replace) {
+  //   const currentUser = store.getState().session.currentUser;
+  //   if (currentUser){
+  //     replace('/corkboard');
+  //   }
+  // }
 
 
   render() {
   	return (
   		<Router history={hashHistory}>
         <Route path="/" component={ SplashContainer } />
-        <Route path="/login" component={ LoginFormContainer } onEnter={this.redirectIfLoggedIn} />
-        <Route path="/signup" component={ SignupFormContainer } onEnter={this.redirectIfLoggedIn} />
-        <Route path="/corkboard" component={ CorkboardContainer }  onEnter={this.ensureLoggedIn} />
-        <Route path="/plan-trip/:tripId" component={ TripContainer }  />
+        <Route path="/login" component={ LoginFormContainer }  />
+        <Route path="/signup" component={ SignupFormContainer }  />
+        <Route path="/corkboard" component={ CorkboardContainer }  onEnter={this._ensureLoggedIn} />
+        <Route path="/plan-trip/:tripId" component={ TripContainer } />
   		</Router>
   	);
   }

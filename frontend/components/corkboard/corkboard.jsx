@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../header/header_container';
+import CorkboardIndex from '../corkboard_index/corkboard_index';
+
 
 export default class Corkboard extends React.Component {
   constructor(props){
@@ -7,19 +9,19 @@ export default class Corkboard extends React.Component {
   }
 
   componentDidMount(){
-    debugger;
+    
     if (this.props.currentUser){
       this.props.fetchTripsForUser(this.props.currentUser.id);
     }
   }
 
   render(){
-    debugger;
+
     return(
       <div className='cork-page'>
         <Header/>
         <div className='cork-main'>
-
+          <CorkboardIndex/>
         </div>
       </div>
     );

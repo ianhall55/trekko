@@ -25,14 +25,13 @@ class LoginForm extends React.Component {
   }
 
   redirectIfLoggedIn(){
-
     if (this.props.loggedIn) {
       if (this.props.pendingTrip.trip) {
         let trip = this.props.pendingTrip.trip;
         trip.user_id = this.props.currentUser.id;
         this.props.createTrip({trip});
       } else {
-        hashHistory.push("/corkboard");
+        hashHistory.push("/");
       }
     }
   }

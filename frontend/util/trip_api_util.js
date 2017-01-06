@@ -22,7 +22,7 @@ export const fetchTripsForUser = function(userId, success, error) {
   $.ajax({
     method: 'GET',
     url: `api/trips`,
-    data: userId,
+    data: {user_id: userId},
     success,
     error
   });
