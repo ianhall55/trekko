@@ -13,8 +13,9 @@ import TripContainer from './trip/trip_container.jsx';
 class AppRouter extends React.Component{
   constructor(props){
     super(props);
+    
     this._ensureLoggedIn = this._ensureLoggedIn.bind(this);
-    this._redirectIfLoggedIn = this._redirectIfLoggedIn.bind(this);
+    // this._redirectIfLoggedIn = this._redirectIfLoggedIn.bind(this);
   }
 
   _ensureLoggedIn(nextState, replace) {
@@ -41,7 +42,7 @@ class AppRouter extends React.Component{
         <Route path="/login" component={ LoginFormContainer }  />
         <Route path="/signup" component={ SignupFormContainer }  />
         <Route path="/corkboard" component={ CorkboardContainer }  onEnter={this._ensureLoggedIn} />
-        <Route path="/plan-trip/:tripId" component={ TripContainer } />
+        <Route path="/plan-trip/:tripId" component={ TripContainer } onEnter={this._ensureLoggedIn} />
   		</Router>
   	);
   }
