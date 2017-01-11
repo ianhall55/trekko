@@ -17,7 +17,7 @@ class Api::DestinationsController < ApplicationController
 
   def create
     @destination = Destination.new(destination_params)
-    last_destination = PhotoSet.where(album_id: @photo_set.album_id).order(:ord).last
+    last_destination = Destination.where(trip_id: @destination.trip_id).order(:ord).last
     @destination.ord = (last_destination) ? last_destination.ord + 1 : 1
     if @destination.save
       render :show

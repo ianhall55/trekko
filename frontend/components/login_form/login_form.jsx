@@ -59,36 +59,6 @@ class LoginForm extends React.Component {
 
   }
 
-  // _handleDemo() {
-	// 	let that = this;
-  //   let i = 1;
-  //   const demoUser = "guest";
-  //
-  //   const intervalID = setInterval(function () {
-  //     if (i < 6) {
-	// 			that.setState({ username: demoUser.slice(0, i) });
-  //     } else if (i === 6) {
-	// 			that.setState({ password: "password" });
-  //     } else {
-  //       window.clearInterval(intervalID);
-  //       that.guestSubmit();
-  //     }
-  //     i++;
-  //   }, 150);
-	// 	this.demo = false;
-  //
-	// }
-  // <input type="button"
-  //            value="Log in with Demo"
-  //            className="guest-login"
-  //            onClick={this._handleDemo} />
-  // <br/>
-  //
-	// guestSubmit(){
-	// 	const user = this.state;
-	// 	this.props.login({user});
-	// }
-
   render() {
 
     return(

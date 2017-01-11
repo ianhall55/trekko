@@ -2,9 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DestinationItem from '../destination_item/destination_item';
 
+import { createDestination } from '../../actions/destinations_actions';
+
 class DestinationIndex extends React.Component {
   constructor(props){
     super(props);
+
+    this.destinationEntered = this.destinationEntered.bind(this);
   }
 
   componentDidMount(){
@@ -23,12 +27,20 @@ class DestinationIndex extends React.Component {
     var place = this.autocomplete.getPlace();
 
     if (place.geometry) {
-      debugger;
+      let destination = {
+        name: place.name,
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+        trip_id: this.props.trip.id
+      }
+
+      this.props.createDestination({destination});
     }
   }
 
 
   render(){
+
     let destinationLines = [];
     if (this.props.destinations[0]){
       this.props.destinations.forEach((destination) => {
@@ -53,11 +65,12 @@ class DestinationIndex extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  destinations: state.destinations
+  destinations: state.destinations.destinations,
+  trip: state.trips.trip
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  createDestination: (destination) => (dispatch(createDestination(destination)))
 });
 
 export default connect(

@@ -4,7 +4,7 @@ import MapComponent from './map.jsx';
 
 const mapStateToProps = state => ({
   trip: state.trips.trip,
-  destinations: state.destinations
+  destinations: state.destinations.destinations
 });
 
 const mapDispatchToProps = dispatch => ({

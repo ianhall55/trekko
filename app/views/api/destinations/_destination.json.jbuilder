@@ -1,1 +1,1 @@
-json.extract! destination, :id, :name, :lat, :lng, :trip_id
+json.extract! destination, :id, :name, :lat, :lng, :trip_id, :ord
