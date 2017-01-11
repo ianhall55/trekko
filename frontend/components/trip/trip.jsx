@@ -37,7 +37,7 @@ export default class Trip extends React.Component {
             <MapContainer />
 
             <div className="trip-options">
-              <h2>{this.props.trip.name}</h2>
+              <h1>{this.props.trip.name}</h1>
               <DestinationIndex />
             </div>
 

@@ -31,3 +31,7 @@
   /*margin-left: 35%;*/
   height: 200vh;
 }
+
+#trip-places-input {
+  width: 200px;
+}

@@ -102,7 +102,7 @@ class SplashPage extends Component {
   }
 
   render(){
-    let place = "Morder";
+    let place = "Mordor";
 
     if (this.props.place){
       place = this.props.place.name;
@@ -144,9 +144,10 @@ class SplashPage extends Component {
 
         <div className="splash-main">
           <Header/>
-          <h1>Trekko Splash!</h1>
-          <input id="pac-input" ref="autocomplete"
-            className="controls" type="text" placeholder="Where do you want to go?" />
+          <div className="splash-content">
+            <input id="pac-input" ref="autocomplete"
+              className="controls" type="text" placeholder="Where do you want to go?" />
+          </div>
         </div>
 
       </div>

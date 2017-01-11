@@ -2,7 +2,7 @@ import React from 'react';
 
 const DestinationItem = ({ destination }) => (
   <li>
-    {destination.name}
+    {destination.ord}. {destination.name}
   </li>
 );
 
