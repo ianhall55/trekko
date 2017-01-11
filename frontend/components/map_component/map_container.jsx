@@ -3,7 +3,8 @@ import MapComponent from './map.jsx';
 
 
 const mapStateToProps = state => ({
-  trip: state.trips.trip
+  trip: state.trips.trip,
+  destinations: state.destinations
 });
 
 const mapDispatchToProps = dispatch => ({

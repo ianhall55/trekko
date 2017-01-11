@@ -21,7 +21,10 @@ const SessionMiddleware = ({getState, dispatch}) => next => action => {
       addTrip(action.trip, createTripSuccess, errorCallback);
       return next(action);
     case TripConstants.FETCH_TRIP:
-      const fetchTripSuccess = (data) => (dispatch(receiveTrip(data)));
+      const fetchTripSuccess = (data) => {
+        dispatch(receiveTrip(data));
+        dispatch(receiveDestinationsForTrip(data.destinations));
+      };
       errorCallback = (xhr) => {
         const errors = xhr.responseJSON;
 

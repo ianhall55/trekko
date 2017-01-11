@@ -1,0 +1,13 @@
+.header {
+  height: 10vh;
+  background-color: #6BBAA7;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.header h1 {
+  color: 'white';
+
+}

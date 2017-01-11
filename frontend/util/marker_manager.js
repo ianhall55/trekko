@@ -13,8 +13,9 @@ export default class MarkerManager {
 
   updateMarkers(destinations){
     this.destinations = destinations;
-    this._destinationsToAdd().forEach(this._createMarkerFromDestinations);
-    this._markersToRemove().forEach(this._removeMarker);
+    this.destinations.forEach(this._createMarkerFromDestinations);
+    // this._destinationsToAdd().forEach(this._createMarkerFromDestinations);
+    // this._markersToRemove().forEach(this._removeMarker);
   }
 
   _destinationsToAdd() {

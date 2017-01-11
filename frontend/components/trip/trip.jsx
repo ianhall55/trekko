@@ -1,7 +1,7 @@
 import React from 'react';
 import MapContainer from '../map_component/map_container.jsx';
 import Header from '../header/header_container';
-
+import DestinationIndex from '../destination_index/destination_index';
 
 export default class Trip extends React.Component {
   constructor(props){
@@ -33,13 +33,15 @@ export default class Trip extends React.Component {
       return(
         <div>
           <Header/>
-          <h1>Hi {this.props.currentUser.username}!</h1>
+          <div className="trip-content">
+            <MapContainer />
 
-          <h2>{this.props.trip.name}</h2>
+            <div className="trip-options">
+              <h2>{this.props.trip.name}</h2>
+              <DestinationIndex />
+            </div>
 
-          <h3>Map</h3>
-
-          <MapContainer />
+          </div>
         </div>
       );
     } else {
