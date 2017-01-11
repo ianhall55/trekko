@@ -47,18 +47,21 @@ export default class Header extends Component {
       return(
         <div className='header'>
           <h1>trekko</h1>
-          <input type="button" onClick={this.homeRedirect} className="header-button" value="Home"/>
-          <input type="button" onClick={this.corkboardRedirect} className="header-button" value="Corkboard"/>
-          <input type="button" onClick={this.logoutRedirect} className="header-button" value="Logout"/>
-
+          <div className="header-options">
+            <input type="button" onClick={this.homeRedirect} className="header-button" value="Home"/>
+            <input type="button" onClick={this.corkboardRedirect} className="header-button" value="Corkboard"/>
+            <input type="button" onClick={this.logoutRedirect} className="header-button" value="Logout"/>
+          </div>
         </div>
       );
     } else {
       return(
         <div className="header">
           <h1>trekko</h1>
-          <input type="button" onClick={this.loginRedirect} className="splash-button" value='Login'/>
-          <input type="button" onClick={this.signupRedirect} className="splash-button" value='Signup'/>
+          <div className="header-options">
+            <input type="button" onClick={this.loginRedirect} className="splash-button" value='Login'/>
+            <input type="button" onClick={this.signupRedirect} className="splash-button" value='Signup'/>
+          </div>
         </div>
       );
     }

@@ -23,9 +23,11 @@ class CorkboardIndex extends React.Component {
     return(
       <div className="corkboard-index" >
         <h1>Corkboard Index</h1>
-        <ul>
-          {tripLines}
-        </ul>
+        <div className="corkboard-items">
+          <ul>
+            {tripLines}
+          </ul>
+        </div>
       </div>
     );
   }

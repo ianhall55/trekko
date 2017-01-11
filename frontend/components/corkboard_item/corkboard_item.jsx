@@ -5,7 +5,9 @@ const corkboardItem = ({ trip }) => (
 
   <li>
     {<Link to={`/plan-trip/${trip.id}`}>
+      <div>
         <h3>{trip.name}</h3>
+      </div>
     </Link>}
   </li>
 );

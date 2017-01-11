@@ -9,18 +9,18 @@ export default class MarkerManager {
     this._createMarkerFromDestinations = this._createMarkerFromDestinations.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
     this._markersToRemove = this._markersToRemove.bind(this);
+    this.updateMarkers = this.updateMarkers.bind(this);
   }
 
   updateMarkers(destinations){
     this.destinations = destinations;
-    this.destinations.forEach(this._createMarkerFromDestinations);
-    // this._destinationsToAdd().forEach(this._createMarkerFromDestinations);
-    // this._markersToRemove().forEach(this._removeMarker);
+    this._destinationsToAdd().forEach(this._createMarkerFromDestinations);
+    this._markersToRemove().forEach(this._removeMarker);
   }
 
   _destinationsToAdd() {
     const currentDestinations = this.markers.map( marker => marker.destinationId );
-    return this.destinations.filter( bench => !currentDestinations.includes(bench.id) );
+    return this.destinations.filter( destination => !currentDestinations.includes(destination.id) );
   }
 
   _markersToRemove(){

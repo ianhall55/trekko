@@ -23,6 +23,7 @@ class DestinationIndex extends React.Component {
     this.autocomplete.addListener('place_changed', this.destinationEntered);
   }
 
+
   destinationEntered(){
     var place = this.autocomplete.getPlace();
 

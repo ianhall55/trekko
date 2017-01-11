@@ -35,9 +35,13 @@ export default class MapComponent extends React.Component{
   }
 
   componentDidUpdate(){
-    if (this.props.destinations[0]){
+    if (this.props.destinations){
       this.MarkerManager.updateMarkers(this.props.destinations);
     }
+  }
+
+  componentWillUnmount(){
+    this.MarkerManager.updateMarkers([]);
   }
 
   _handleMarkerClick(bench) {
