@@ -17,6 +17,7 @@
   background-size: cover;
   background-position: center 85%;
   overflow: auto;
+  min-height: 100vh;
 }
 
 .corkboard-items {
