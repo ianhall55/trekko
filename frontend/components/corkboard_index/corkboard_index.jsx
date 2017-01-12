@@ -20,16 +20,22 @@ class CorkboardIndex extends React.Component {
       });
     }
 
-    return(
-      <div className="corkboard-index" >
-        <h1>Corkboard Index</h1>
-        <div className="corkboard-items">
-          <ul>
-            {tripLines}
-          </ul>
+    if (this.props.trips[0]){
+      return(
+        <div className="corkboard-index" >
+          <h1>Corkboard Index</h1>
+          <div className="corkboard-items">
+            <ul>
+              {tripLines}
+            </ul>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return(
+        <h2>Loading...</h2>
+      );
+    }
   }
 }
 

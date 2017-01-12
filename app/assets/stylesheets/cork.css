@@ -42,4 +42,15 @@
 .corkboard-items ul li a div {
   width: 100%;
   height: 100%;
+  align-items: center;
+}
+
+.corkboard-items ul li a {
+  text-decoration: none;
+}
+
+.corkboard-items ul li a div h3{
+  padding-top: 180px;
+  text-align: center;
+  color: #6BBAA7;
 }
