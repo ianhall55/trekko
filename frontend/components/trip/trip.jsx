@@ -1,7 +1,7 @@
 import React from 'react';
 import MapContainer from '../map_component/map_container.jsx';
 import Header from '../header/header_container';
-import DestinationIndex from '../destination_index/destination_index';
+import TripOptions from '../trip_options/trip_options';
 
 export default class Trip extends React.Component {
   constructor(props){
@@ -38,7 +38,7 @@ export default class Trip extends React.Component {
 
             <div className="trip-options">
               <h1>{this.props.trip.name}</h1>
-              <DestinationIndex />
+              <TripOptions />
             </div>
 
           </div>
