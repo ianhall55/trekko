@@ -20,9 +20,8 @@ class TripOptions extends React.Component {
     switch (this.props.tripOptions) {
       case 'Destinations':
         return(
-          <div>
-            <div>
-              <h2>Trip Options</h2>
+          <div className="trip-options-content" >
+            <div className="trip-options-header" >
               <TripOptionsNavigation/>
             </div>
             <DestinationIndex/>
@@ -31,9 +30,8 @@ class TripOptions extends React.Component {
         );
       case 'Travelers':
         return(
-          <div>
-            <div>
-              <h2>Trip Options</h2>
+          <div className="trip-options-content" >
+            <div className="trip-options-header" >
               <TripOptionsNavigation/>
             </div>
             <h3>Travelers</h3>
@@ -42,9 +40,8 @@ class TripOptions extends React.Component {
         );
       case 'Recommendations':
         return(
-          <div>
-            <div>
-              <h2>Trip Options</h2>
+          <div className="trip-options-content" >
+            <div className="trip-options-header" >
               <TripOptionsNavigation/>
             </div>
             <RecommendationsIndex />
@@ -53,7 +50,7 @@ class TripOptions extends React.Component {
         );
       default:
         return(
-          <div>
+          <div className="trip-options-content" >
             <h2>Loading...</h2>
           </div>
         );

@@ -23,7 +23,6 @@ class CorkboardIndex extends React.Component {
     if (this.props.trips[0]){
       return(
         <div className="corkboard-index" >
-          <h1>Corkboard Index</h1>
           <div className="corkboard-items">
             <ul>
               {tripLines}

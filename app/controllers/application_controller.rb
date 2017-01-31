@@ -30,5 +30,11 @@ class ApplicationController < ActionController::Base
     render json: {base: ['invalid credentials']}, status: 401 if !current_user
   end
 
+  def authenticate_request
+    if session[:session_token] != current_user.session_token
+      render json: {base: ['Unauthorized Request']}, status: 404
+    end
+  end
+
 
 end

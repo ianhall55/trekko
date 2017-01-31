@@ -46,9 +46,8 @@ export default class Header extends Component {
     if (this.props.currentUser) {
       return(
         <div className='header'>
-          <h1>trekko</h1>
+          <h1 onClick={this.homeRedirect} >Trekko</h1>
           <div className="header-options">
-            <input type="button" onClick={this.homeRedirect} className="header-button" value="Home"/>
             <input type="button" onClick={this.corkboardRedirect} className="header-button" value="Corkboard"/>
             <input type="button" onClick={this.logoutRedirect} className="header-button" value="Logout"/>
           </div>
@@ -59,8 +58,8 @@ export default class Header extends Component {
         <div className="header">
           <h1>trekko</h1>
           <div className="header-options">
-            <input type="button" onClick={this.loginRedirect} className="splash-button" value='Login'/>
-            <input type="button" onClick={this.signupRedirect} className="splash-button" value='Signup'/>
+            <input type="button" onClick={this.loginRedirect} className="header-button" value='Login'/>
+            <input type="button" onClick={this.signupRedirect} className="header-button" value='Signup'/>
           </div>
         </div>
       );

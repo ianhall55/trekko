@@ -22,15 +22,42 @@
   background-color: grey;
 }
 
-
-
 .trip-options {
   margin-left: 40%;
   width: 60%;
   height: 200vh;
-  padding: 20px;
 }
 
 #trip-places-input {
   width: 200px;
+}
+
+.trip-options h1 {
+  font-size: 28px;
+  font-weight: 500;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid darkgrey;
+  border-radius: 2px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.3);
+  color: #499c89;
+}
+
+
+.trip-options-nav button {
+    border: 0;
+    width: 33%;
+    height: 35px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid darkgrey;
+    margin: 1px;
+    border-radius: 2px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.3);
+}
+
+.trip-options-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

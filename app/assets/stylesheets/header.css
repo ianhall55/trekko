@@ -8,18 +8,46 @@
   display: flex;
   justify-content: space-between;
   padding: 0px 30px;
+  border-bottom: 1px solid darkgrey;
+  border-radius: 2px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.3);
 }
 
 .header h1 {
   color: white;
   font-size: 40px;
   margin: auto 0px;
-  padding-left: 20px;
+  padding: 0px 20px;
+}
+
+.header h1:hover {
+  cursor: pointer;
+  background-color: #499c89
 }
 
 .header-options {
-  width: 250px;
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  margin-right: 30px;
 }
+
+.header-button {
+  transition: all 0.3s ease 0s;
+  padding: 20px 10px;
+  font-size: 16px;
+  width: 100px;
+  border: 0;
+  color: white;
+  align-content: center;
+  border-left: 1px solid white;
+  background-color: #6BBAA7;
+}
+
+.header-button:hover {
+  cursor: pointer;
+  background-color: #499c89
+}
+
+/*.header-button:last-of-type {
+  border-right: 1px solid white;
+}*/

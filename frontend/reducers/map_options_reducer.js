@@ -13,9 +13,11 @@ const INITIAL_STATE = {
 const MapOptionsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CENTER_MAP:
-      return _.merge({}, state, action.payload);
+    
+      let newState = _.merge({}, INITIAL_STATE, action.payload);
+      return newState;
     default:
-      return { state };
+      return INITIAL_STATE;
 
   }
 };

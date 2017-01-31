@@ -1,6 +1,7 @@
 class Api::TripsController < ApplicationController
 
   def index
+    authenticate_request
     @trips = Trip.where(user_id: params[:user_id])
 
     render :index

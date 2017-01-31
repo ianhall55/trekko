@@ -19,7 +19,7 @@ class TripOptionsNavigation extends React.Component {
     switch(this.props.tripOptions){
       case 'Destinations':
         return(
-          <nav>
+          <nav className="trip-options-nav">
             <button  disabled>
               Destinations
             </button>
@@ -33,7 +33,7 @@ class TripOptionsNavigation extends React.Component {
         );
       case 'Recommendations':
         return(
-          <nav>
+          <nav className="trip-options-nav">
             <button data-option="Destinations" onClick={this.tripOptionSelected}>
               Destinations
             </button>
@@ -47,7 +47,7 @@ class TripOptionsNavigation extends React.Component {
         );
       case 'Travelers':
         return(
-          <nav>
+          <nav className="trip-options-nav">
             <button data-option="Destinations" onClick={this.tripOptionSelected}>
               Destinations
             </button>
