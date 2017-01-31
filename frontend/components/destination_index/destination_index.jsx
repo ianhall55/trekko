@@ -38,6 +38,7 @@ class DestinationIndex extends React.Component {
       };
 
       this.props.createDestination({destination});
+      $("#trip-places-input").val("");
     }
   }
 
