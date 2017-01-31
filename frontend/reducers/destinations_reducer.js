@@ -1,10 +1,14 @@
+import {
+  SELECT_DESTINATION
+} from '../actions/types';
 import { DestinationConstants } from '../actions/destinations_actions';
 import { merge } from 'lodash';
 import {hashHistory} from 'react-router';
 
 const _defaultState = {
   destinations: [],
-  showDestination: {}
+  showDestination: {},
+  selectedDestination: {}
 };
 
 const DestinationsReducer = function(state = _defaultState, action){
@@ -19,6 +23,8 @@ const DestinationsReducer = function(state = _defaultState, action){
     case DestinationConstants.RECEIVE_DESTINATION:
       destinations = [...state.destinations, action.destination];
       return merge({}, state, {destinations});
+    case SELECT_DESTINATION:
+      return merge({}, state, {selectedDestination: action.payload});
     default:
       return state;
   }

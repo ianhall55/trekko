@@ -11,7 +11,6 @@ class TripOptionsNavigation extends React.Component {
   }
 
   tripOptionSelected(e){
-    debugger;
     e.preventDefault();
     this.props.receiveTripOption(e.target.dataset.option);
   }

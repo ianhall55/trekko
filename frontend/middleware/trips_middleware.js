@@ -1,6 +1,7 @@
 import { TripConstants, receiveTrip, receiveTripsForUser } from '../actions/trips_actions';
 import { receiveDestinationsForTrip } from '../actions/destinations_actions';
 import { addTrip, fetchTrip, fetchTripsForUser } from '../util/trip_api_util';
+import { centerMap } from '../actions';
 import {hashHistory} from 'react-router';
 
 

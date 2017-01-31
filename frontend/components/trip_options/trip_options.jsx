@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import DestinationIndex from '../destination_index/destination_index';
 import TripOptionsNavigation from './trip_options_navigation';
-
+import DestinationIndex from '../destination_index/destination_index';
+import RecommendationsIndex from '../recommendations_index/recommendations_index';
 import { receiveTripOption } from '../../actions/trip_options_actions';
 
 class TripOptions extends React.Component {
@@ -47,7 +47,7 @@ class TripOptions extends React.Component {
               <h2>Trip Options</h2>
               <TripOptionsNavigation/>
             </div>
-            <h3>Recommendations</h3>
+            <RecommendationsIndex />
 
           </div>
         );

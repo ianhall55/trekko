@@ -1,3 +1,7 @@
+import {
+  SELECT_DESTINATION
+} from './types';
+
 export const DestinationConstants = {
   CREATE_DESTINATION: "CREATE_DESTINATION",
   RECEIVE_DESTINATION: "RECEIVE_DESTINATION",
@@ -40,4 +44,9 @@ export const fetchDestinationsForTrip = tripId => ({
 
 export const clearDestination = () => ({
   type: DestinationConstants.CLEAR_DESTINATION
+});
+
+export const selectDestination = destination => ({
+  type: SELECT_DESTINATION,
+  payload: destination
 });

@@ -1,8 +1,9 @@
 import React from 'react';
 import MarkerManager from '../../util/marker_manager';
 // api_key = AIzaSyB4l9vEKNdn38idNWvyHRylKtPCEt5OYYs
+import { connect } from 'react-redux';
 
-export default class MapComponent extends React.Component{
+class MapComponent extends React.Component{
   constructor(props){
     super(props);
   }
@@ -15,7 +16,7 @@ export default class MapComponent extends React.Component{
     };
 
     let uluru = {};
-    if (this.props.trip) {
+    if (this.props.lat) {
       uluru = {
         lat: this.props.trip.lat,
         lng: this.props.trip.lng
@@ -23,15 +24,32 @@ export default class MapComponent extends React.Component{
     }
 
     this.map = new google.maps.Map(mapElement, {
-      center: uluru
+      center: uluru,
+      zoom: this.props.zoom
     });
 
-    this.map.fitBounds(this.props.trip.viewport);
+    if (this.props.trip) {
+      this.map.fitBounds(this.props.trip.viewport);
+    }
 
     this.MarkerManager = new MarkerManager(this.map, this._handleMarkerClick.bind(this));
     if (this.props.destinations[0]){
       this.MarkerManager.updateMarkers(this.props.destinations);
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { lat, lng, zoom, viewport } = nextProps;
+
+    if (lat) {
+      this.map.panTo({
+        lat: lat,
+        lng: lng
+      });
+    }
+
+    if (zoom) { this.map.setZoom(zoom); }
+    if (viewport) { this.map.fitBounds(this.props.trip.viewport); }
   }
 
   componentDidUpdate(){
@@ -48,12 +66,21 @@ export default class MapComponent extends React.Component{
     this.props.router.push(`benches/${bench.id}`);
   }
 
-  render(){
-
-    return(
+  render() {
+    return (
       <div className="map">
         <div id='map' ref="map"/>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { lat, lng, viewport, zoom } = state.mapOptions;
+  const trip = state.trips.trip;
+  const destinations = state.destinations.destinations;
+
+  return { lat, lng, viewport, zoom, trip, destinations };
+};
+
+export default connect(mapStateToProps, {})(MapComponent);

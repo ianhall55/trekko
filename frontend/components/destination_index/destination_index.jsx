@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DestinationItem from '../destination_item/destination_item';
-
-import { createDestination } from '../../actions/destinations_actions';
+import { createDestination, centerMap } from '../../actions';
 
 class DestinationIndex extends React.Component {
   constructor(props){
@@ -12,6 +11,9 @@ class DestinationIndex extends React.Component {
   }
 
   componentDidMount(){
+    const { lat, lng, viewport } = this.props.trip;
+    this.props.centerMap({ lat, lng, viewport });
+
     const autocompleteInput = this.refs.autocomplete;
 
     const autocompleteOptions = {
@@ -33,7 +35,7 @@ class DestinationIndex extends React.Component {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng(),
         trip_id: this.props.trip.id
-      }
+      };
 
       this.props.createDestination({destination});
     }
@@ -70,11 +72,12 @@ const mapStateToProps = state => ({
   trip: state.trips.trip
 });
 
-const mapDispatchToProps = dispatch => ({
-  createDestination: (destination) => (dispatch(createDestination(destination)))
-});
+// const mapDispatchToProps = dispatch => ({
+//   createDestination: (destination) => (dispatch(createDestination(destination)))
+//   centerMap: ()
+// });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { createDestination, centerMap }
 )(DestinationIndex);

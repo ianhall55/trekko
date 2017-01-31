@@ -1,5 +1,5 @@
 import React from 'react';
-import MapContainer from '../map_component/map_container.jsx';
+import Map from '../map_component/map.jsx';
 import Header from '../header/header_container';
 import TripOptions from '../trip_options/trip_options';
 
@@ -11,6 +11,9 @@ export default class Trip extends React.Component {
   componentDidMount(){
     if (!this.props.trip.id) {
       this.props.fetchTrip(this.props.params.tripId);
+    } else {
+      const { lat, lng, viewport } =  this.props.trip;
+      this.props.centerMap({ lat: lat, lng: lng, viewport: viewport });
     }
   }
 
@@ -34,7 +37,7 @@ export default class Trip extends React.Component {
         <div>
           <Header/>
           <div className="trip-content">
-            <MapContainer />
+            <Map />
 
             <div className="trip-options">
               <h1>{this.props.trip.name}</h1>
@@ -47,6 +50,7 @@ export default class Trip extends React.Component {
     } else {
       return(
         <div>
+          <Header />
           <h1>Loading...</h1>
         </div>
       );
