@@ -41,13 +41,15 @@ export default class Header extends Component {
 
 
   render(){
-
-
+    let displayProps = {};
+    if (this.props.noOptions) {
+      displayProps = {display:'none'};
+    }
     if (this.props.currentUser) {
       return(
         <div className='header'>
-          <h1 onClick={this.homeRedirect} >Trekko</h1>
-          <div className="header-options">
+          <h1 onClick={this.homeRedirect}>Trekko</h1>
+          <div className="header-options" style={displayProps}>
             <input type="button" onClick={this.corkboardRedirect} className="header-button" value="Corkboard"/>
             <input type="button" onClick={this.logoutRedirect} className="header-button" value="Logout"/>
           </div>
@@ -56,8 +58,8 @@ export default class Header extends Component {
     } else {
       return(
         <div className="header">
-          <h1>trekko</h1>
-          <div className="header-options">
+          <h1 onClick={this.homeRedirect}>Trekko</h1>
+          <div className="header-options" style={displayProps}>
             <input type="button" onClick={this.loginRedirect} className="header-button" value='Login'/>
             <input type="button" onClick={this.signupRedirect} className="header-button" value='Signup'/>
           </div>

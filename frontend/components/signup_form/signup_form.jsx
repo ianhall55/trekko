@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import { withRouter } from 'react-router';
+import Header from '../header/header';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -48,66 +49,58 @@ class SignupForm extends React.Component {
   }
 
   renderErrors() {
-    const errorLines = this.props.errors.map( (error, i) => (
-      <li className="error" key={i}>
-        {error}
-      </li>
+    const errorLines = [];
+
+    this.props.errors.forEach( (error, i) => (
+      errorLines.push(
+        <li className="error" key={i}>
+          {error}
+        </li>
+      )
     ));
 
-    return(
-			<ul>
-        {errorLines}
-			</ul>
-		);
-
+    return(errorLines);
   }
-
-  // loginDemo() {
-  //   const user = { username: 'guest', password: 'password' };
-  //   this.props.login({user});
-  // }
-  // <input type="button"
-  //            value="Log in with Demo"
-  //            className="guest-login"
-  //            onClick={this.loginDemo} />
-
 
   render() {
 
     return(
       <div className="login-form-container">
-				<form onSubmit={this.handleSubmit} className="login-form-box">
-          {<Link to="/" className="form-title">trekko</Link>}
-					<br/>
-					{ this.renderErrors() }
-					<div className="login-form">
-
+        <Header noOptions={true} />
+				<form onSubmit={this.handleSubmit} className="session-form-box">
+					<div className="session-form">
+            <ul className="session-errors">
+              { this.renderErrors() }
+            </ul>
             <br />
-						<label> Email:
+
 							<input type="text"
 								value={this.state.email}
 								onChange={this.update("email")}
-								className="login-input" />
-						</label>
+								className="login-input"
+                placeholder="Email" />
+						
 
             <br />
-						<label> Username:
+
 							<input type="text"
 								value={this.state.username}
 								onChange={this.update("username")}
-								className="login-input" />
-						</label>
+								className="login-input"
+                placeholder="Username" />
+						
 
 						<br />
-						<label> Password:
+
 							<input type="password"
 								value={this.state.password}
 								onChange={this.update("password")}
-								className="login-input" />
-						</label>
+								className="login-input"
+                placeholder="Password" />
+						
 
 						<br />
-						<input className="login-submit" type="submit" value="GET STARTED" />
+						<input className="login-submit" type="submit" value="SIGN UP" />
             <br />
               <label className="form-footer">
                 Already have an account? { <Link to="/login">Log in</Link> }

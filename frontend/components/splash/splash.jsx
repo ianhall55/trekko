@@ -116,9 +116,14 @@ class SplashPage extends Component {
           contentLabel="Confirm Trip"
           style={ModalStyle.splashModal}
           >
-          <h2>Do you want to create a trip to {place}?</h2>
-          <button onClick={this.createTrip}>Confirm</button>
-          <button onClick={this.closeLocationModal}>Cancel</button>
+          <div className="modal-content" >
+            <span className="modal-span" >Do you want to create a trip to:</span>
+            <h1>{place}</h1>
+            <div>
+              <button className="modal-button" onClick={this.createTrip}>Confirm</button>
+              <button className="modal-button" onClick={this.closeLocationModal}>Cancel</button>
+            </div>
+          </div>
         </Modal>
 
         <Modal
@@ -127,9 +132,13 @@ class SplashPage extends Component {
           contentLabel="Confirm Trip"
           style={ModalStyle.splashModal}
           >
-          <h2>You have to signin first</h2>
-          <button onClick={this.signupRedirect}>Signup</button>
-          <button onClick={this.loginRedirect}>Login</button>
+          <div className="modal-content" >
+            <span className="modal-span" >You have to sign-in first</span>
+            <div>
+              <button className="modal-button" onClick={this.loginRedirect}>Login</button>
+              <button className="modal-button" onClick={this.signupRedirect}>Signup</button>
+            </div>
+          </div>
         </Modal>
 
         <Modal
@@ -138,8 +147,10 @@ class SplashPage extends Component {
           contentLabel="Confirm Trip"
           style={ModalStyle.splashModal}
           >
-          <h2>Please choose location from dropdown</h2>
-          <button className="close-modal" onClick={this.closeModal}>Close</button>
+          <div className="modal-content">
+            <span className="modal-span" >Please choose location from dropdown</span>
+            <button className="modal-button" onClick={this.closeModal}>Close</button>
+          </div>
         </Modal>
 
         <div className="splash-main">
@@ -154,5 +165,7 @@ class SplashPage extends Component {
     );
   }
 }
+
+
 
 export default withRouter(SplashPage);

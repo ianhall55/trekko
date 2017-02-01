@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, hashHistory, withRouter } from 'react-router';
+import Header from '../header/header';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -47,15 +48,16 @@ class LoginForm extends React.Component {
   }
 
   renderErrors() {
-    return(
-			<ul>
-				{this.props.errors.map( (error, i) => (
-					<li className="error" key={i}>
-						{error}
-					</li>
-				))}
-			</ul>
-		);
+    const errorLines = [];
+    this.props.errors.forEach( (error, i) => (
+      errorLines.push(
+        <li className="error" key={i}>
+          {error}
+        </li>
+      )
+    ));
+
+    return(errorLines);
 
   }
 
@@ -63,25 +65,29 @@ class LoginForm extends React.Component {
 
     return(
       <div className="login-form-container">
-				<form onSubmit={this.handleSubmit} className="login-form-box">
-          {<Link to="/" className="form-title">trekko</Link>}
+        <Header noOptions={true} />
+        <form onSubmit={this.handleSubmit} className="session-form-box">
 					<br/>
-					{ this.renderErrors() }
-					<div className="login-form">
+					<div className="session-form">
+            <ul className="session-errors">
+              { this.renderErrors() }
+            </ul>
 						<br />
-						<label> Username:</label>
+
 							<input type="text"
 								value={this.state.username}
 								onChange={this.update("username")}
-								className="login-input" />
+								className="login-input"
+                placeholder="Username" />
 
 
 						<br />
-						<label> Password: </label>
+
 							<input type="password"
 								value={this.state.password}
 								onChange={this.update("password")}
-								className="login-input" />
+								className="login-input"
+                placeholder="Password" />
 
 
 						<br />

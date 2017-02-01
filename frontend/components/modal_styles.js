@@ -19,7 +19,7 @@ const ModalStyle = {
       transform       : 'translate(-50%, -50%)',
       border          : '1px solid #ccc',
       padding         : '20px',
-      borderRadius    : 'none'
+      borderRadius    : '5px'
     }
   }
 };

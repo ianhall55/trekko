@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import TripOptionsNavigation from './trip_options_navigation';
 import DestinationIndex from '../destination_index/destination_index';
-import RecommendationsIndex from '../recommendations_index/recommendations_index';
+import ItineraryIndex from '../itinerary_index/itinerary_index';
 import { receiveTripOption } from '../../actions/trip_options_actions';
 
 class TripOptions extends React.Component {
@@ -38,13 +38,13 @@ class TripOptions extends React.Component {
 
           </div>
         );
-      case 'Recommendations':
+      case 'Itinerary':
         return(
           <div className="trip-options-content" >
             <div className="trip-options-header" >
               <TripOptionsNavigation/>
             </div>
-            <RecommendationsIndex />
+            <ItineraryIndex />
 
           </div>
         );
