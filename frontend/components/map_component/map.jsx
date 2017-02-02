@@ -1,6 +1,6 @@
 import React from 'react';
 import MarkerManager from '../../util/marker_manager';
-// api_key = AIzaSyB4l9vEKNdn38idNWvyHRylKtPCEt5OYYs
+
 import { connect } from 'react-redux';
 
 class MapComponent extends React.Component{

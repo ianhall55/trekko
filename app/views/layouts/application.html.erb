@@ -6,24 +6,10 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4l9vEKNdn38idNWvyHRylKtPCEt5OYYs&libraries=places">
-  </script>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&libraries=places"%>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
   <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-  <script type="text/javascript">
-     window.cloudinary_options = {
-       cloud_name: '<%= ENV['CLOUD_NAME'] %>',
-       upload_preset: '<%= ENV['UPLOAD_PRESET'] %>'
-     }
-   </script>
-  <script>
-    <% if logged_in? %>
-      window.currentUser = <%= render("api/users/user.json.jbuilder",
-        user: current_user).html_safe %>
-    <% end %>
-  </script>
-
+  
 </head>
 <body>
 
