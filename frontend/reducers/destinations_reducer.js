@@ -20,7 +20,7 @@ const DestinationsReducer = function(state = _defaultState, action){
     //   return merge({}, _defaultState, {pendingDestination});
     case DestinationConstants.RECEIVE_DESTINATIONS_FOR_TRIP:
       destinations = action.destinations;
-      return merge({}, state, {destinations});
+      return merge({}, {destinations});
     case DestinationConstants.RECEIVE_DESTINATION:
       destinations = [...state.destinations, action.destination];
       return merge({}, state, {destinations});

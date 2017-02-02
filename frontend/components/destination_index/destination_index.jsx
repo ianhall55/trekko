@@ -58,13 +58,11 @@ class DestinationIndex extends React.Component {
 
     return(
       <div className="destination-index">
-      <h2>Destinations</h2>
+        <input id="trip-places-input" ref="autocomplete"
+          className="controls" type="text" placeholder="Add Destination" />
         <ul>
           {destinationLines}
         </ul>
-        Add Destination:
-        <input id="trip-places-input" ref="autocomplete"
-          className="controls" type="text" placeholder="Where do you want to go?" />
       </div>
     );
   }

@@ -19,7 +19,7 @@ class DestinationList extends Component {
       firstDestination = destinations[0];
       this.props.selectDestination(firstDestination);
     }
-    debugger;
+  
     let { lat, lng } = firstDestination;
     this.props.centerMap({lat: lat, lng: lng, zoom: zoom});
   }

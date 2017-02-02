@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DestinationList from '../destination_list/destination_list';
+import DestinationSelect from '../destination_select/destination_select';
 
 class RecommendationsIndex extends Component {
   constructor(props) {
@@ -12,8 +12,9 @@ class RecommendationsIndex extends Component {
 
   render() {
     return (
-      <div className="recommendations-main" >
-        <DestinationList />
+      <div className="itinerary-main" >
+        <DestinationSelect />
+
       </div>
     );
   }
