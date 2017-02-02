@@ -1,5 +1,6 @@
 import {
-  SELECT_DESTINATION
+  SELECT_DESTINATION,
+  CLEAR_SELECTED_DESTINATION
 } from './types';
 
 export const DestinationConstants = {
@@ -49,4 +50,8 @@ export const clearDestination = () => ({
 export const selectDestination = destination => ({
   type: SELECT_DESTINATION,
   payload: destination
+});
+
+export const clearSelectedDestination = () => ({
+  type: CLEAR_SELECTED_DESTINATION
 });

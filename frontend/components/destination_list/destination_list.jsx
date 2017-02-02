@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectDestination, centerMap } from '../../actions';
+import {
+  selectDestination,
+  centerMap,
+  clearSelectedDestination
+} from '../../actions';
 
 class DestinationList extends Component {
 
   componentDidMount() {
-    let firstDestination = this.props.destinations[0];
+    const { selectedDestination, destinations } = this.props;
+    let firstDestination = null;
+    let zoom = 7;
+    if (selectedDestination.id) {
+      firstDestination = selectedDestination;
+      zoom = 12;
+    } else {
+      firstDestination = destinations[0];
+      this.props.selectDestination(firstDestination);
+    }
+    debugger;
     let { lat, lng } = firstDestination;
-    this.props.selectDestination(firstDestination);
-    this.props.centerMap({lat: lat, lng: lng});
+    this.props.centerMap({lat: lat, lng: lng, zoom: zoom});
+  }
+
+  componentWillUnmount() {
+    this.props.clearSelectedDestination();
   }
 
   destinationChanged(e) {
@@ -21,18 +38,25 @@ class DestinationList extends Component {
 
   render() {
     const dropdownOptions = [];
-    const destinations = this.props.destinations;
-
+    const { destinations, selectedDestination } = this.props;
+    let selectedIndex = '';
     if (destinations) {
       destinations.forEach((destination, index) => {
+        if (selectedDestination && selectedDestination.id === destination.id) {
+          selectedIndex = index;
+        }
         dropdownOptions.push(
-          <option key={destination.id} value={index}>{destination.name}</option>
+          <option key={destination.id} value={index} >{destination.name}</option>
         );
       });
     }
 
     return (
-      <select className="destination-dropdown" onChange={this.destinationChanged.bind(this)}>
+      <select
+        className="destination-dropdown"
+        onChange={this.destinationChanged.bind(this)}
+        value={selectedIndex}
+      >
         {dropdownOptions}
       </select>
     );
@@ -41,11 +65,12 @@ class DestinationList extends Component {
 
 const mapStateToProps = state => {
   const { destinations } = state.destinations;
+  const selectedDestination = state.destinations.selectedDestination;
 
-  return { destinations };
+  return { destinations, selectedDestination };
 };
 
 export default connect(
   mapStateToProps,
-  { selectDestination, centerMap }
+  { selectDestination, clearSelectedDestination, centerMap }
 )(DestinationList);

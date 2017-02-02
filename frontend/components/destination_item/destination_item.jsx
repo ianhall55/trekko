@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { selectDestination, receiveTripOption } from '../../actions';
 
-const DestinationItem = ({ destination }) => (
-  <li>
-    {destination.ord}. {destination.name}
-  </li>
-);
+class DestinationItem extends Component {
+  handleClick(e) {
+    e.preventDefault();
+    this.props.selectDestination(this.props.destination);
+    this.props.receiveTripOption('Itinerary');
+  }
 
-export default DestinationItem;
+  render() {
+    const { destination } = this.props;
+
+    return (
+      <li onClick={this.handleClick.bind(this)}>
+        {destination.name}
+      </li>
+    );
+  }
+
+}
+export default connect(
+  null,
+  { selectDestination, receiveTripOption }
+)(DestinationItem);

@@ -1,5 +1,6 @@
 class Api::DestinationsController < ApplicationController
-
+  before_action :authenticate_request
+  
   def index
     # if params[:trip_id]
     #   @destinations = Destination.where(trip_id: params[:trip_id]).order(:ord)

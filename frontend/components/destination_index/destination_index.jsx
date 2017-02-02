@@ -11,8 +11,10 @@ class DestinationIndex extends React.Component {
   }
 
   componentDidMount(){
-    const { lat, lng, viewport } = this.props.trip;
-    this.props.centerMap({ lat, lng, viewport });
+    if (this.props.trip.id) {
+      const { lat, lng, viewport } = this.props.trip;
+      this.props.centerMap({ lat, lng, viewport });
+    }
 
     const autocompleteInput = this.refs.autocomplete;
 

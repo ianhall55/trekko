@@ -1,7 +1,7 @@
 class Api::TripsController < ApplicationController
-
+  before_action :authenticate_request
+  
   def index
-    authenticate_request
     @trips = Trip.where(user_id: params[:user_id])
 
     render :index
@@ -14,7 +14,6 @@ class Api::TripsController < ApplicationController
   end
 
   def create
-
     @trip = Trip.new(trip_params)
     @trip.viewport = params[:trip][:viewport]
     @trip.viewport.each {|k,v| @trip.viewport[k] = v.to_f}
