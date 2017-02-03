@@ -22,6 +22,22 @@ class User < ActiveRecord::Base
 
   has_many :users
 
+  def self.find_or_create_from_auth_hash(auth_hash)
+    if auth_hash[:provider] == 'facebook'
+      user = User.find_by(facebook_uid: auth_hash[:uid])
+      if user.nil?
+        user = User.create!(
+          facebook_uid: auth_hash[:uid],
+          email: auth_hash[:info][:email],
+          first_name: auth_hash[:info][:first_name],
+          last_name: auth_hash[:info][:last_name],
+          avatar:  URI.parse(auth_hash[:info][:image])
+        )
+      end
+    end
+    user
+  end
+
   def password=(password)
     @password = password
     pw_dig = BCrypt::Password.create(password)

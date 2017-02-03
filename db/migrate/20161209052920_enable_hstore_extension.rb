@@ -1,5 +1,9 @@
 class EnableHstoreExtension < ActiveRecord::Migration
   def change
-    enable_extension 'hstore'
+
   end
 end
+
+# Was throwing an error and I no longer use hstore so removed
+
+# enable_extension 'hstore'

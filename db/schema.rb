@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110204910) do
+ActiveRecord::Schema.define(version: 20170203195722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name",       null: false
@@ -45,6 +44,10 @@ ActiveRecord::Schema.define(version: 20170110204910) do
     t.string   "session_token",   null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "facebook_uid"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "avatar_url"
   end
 
 end
