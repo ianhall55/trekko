@@ -7,6 +7,8 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      first_name: "",
+      last_name: "",
       email: "",
       username: "",
       password: ""
@@ -73,13 +75,27 @@ class SignupForm extends React.Component {
               { this.renderErrors() }
             </ul>
             <br />
+            <div className="signup-name-container">
+              <input type="text"
+                value={this.state.first_name}
+                onChange={this.update("first_name")}
+                className="login-input"
+                placeholder="First Name" />
 
+              <input type="text"
+                value={this.state.last_name}
+                onChange={this.update("last_name")}
+                className="login-input"
+                placeholder="Last Name" />
+
+            </div>
+            <br />
 							<input type="text"
 								value={this.state.email}
 								onChange={this.update("email")}
 								className="login-input"
                 placeholder="Email" />
-						
+
 
             <br />
 
@@ -88,7 +104,7 @@ class SignupForm extends React.Component {
 								onChange={this.update("username")}
 								className="login-input"
                 placeholder="Username" />
-						
+
 
 						<br />
 
@@ -97,7 +113,7 @@ class SignupForm extends React.Component {
 								onChange={this.update("password")}
 								className="login-input"
                 placeholder="Password" />
-						
+
 
 						<br />
 						<input className="login-submit" type="submit" value="SIGN UP" />

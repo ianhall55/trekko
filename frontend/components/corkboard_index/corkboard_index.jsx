@@ -20,7 +20,7 @@ class CorkboardIndex extends React.Component {
       });
     }
 
-    if (this.props.trips[0]){
+    if (this.props.trips){
       return(
         <div className="corkboard-index" >
           <div className="corkboard-items">

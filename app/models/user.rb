@@ -9,10 +9,15 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  facebook_uid    :string
+#  first_name      :string
+#  last_name       :string
+#  avatar_url      :string
 #
 
 class User < ActiveRecord::Base
-  validates :username, :email, :password_digest, :session_token, presence: true
+  validates :first_name, :last_name, :username, presence: true
+  validates :email, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
@@ -31,7 +36,8 @@ class User < ActiveRecord::Base
           email: auth_hash[:info][:email],
           first_name: auth_hash[:info][:first_name],
           last_name: auth_hash[:info][:last_name],
-          avatar:  URI.parse(auth_hash[:info][:image])
+          username: "#{auth_hash[:info][:first_name]}_#{auth_hash[:info][:last_name]}",
+          avatar_url:  URI.parse(auth_hash[:info][:image])
         )
       end
     end
