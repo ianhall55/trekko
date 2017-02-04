@@ -17,13 +17,14 @@
 
 class User < ActiveRecord::Base
   validates :first_name, :last_name, :username, presence: true
-  validates :email, :password_digest, :session_token, presence: true
+  validates :email, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
   after_initialize :ensure_session_token
+  after_initialize :validate_pw_dig_or_facebook_uid
 
   has_many :users
 
@@ -31,17 +32,24 @@ class User < ActiveRecord::Base
     if auth_hash[:provider] == 'facebook'
       user = User.find_by(facebook_uid: auth_hash[:uid])
       if user.nil?
+        split_name = auth_hash[:info][:name].split(" ")
         user = User.create!(
           facebook_uid: auth_hash[:uid],
           email: auth_hash[:info][:email],
-          first_name: auth_hash[:info][:first_name],
-          last_name: auth_hash[:info][:last_name],
-          username: "#{auth_hash[:info][:first_name]}_#{auth_hash[:info][:last_name]}",
+          first_name: split_name[0],
+          last_name: split_name[1],
+          username: "#{split_name[0]}_#{split_name[1]}",
           avatar_url:  URI.parse(auth_hash[:info][:image])
         )
       end
     end
     user
+  end
+
+  def validate_pw_dig_or_facebook_uid
+    unless self.facebook_uid || self.password_digest
+      raise("User needs password or facebook uid")
+    end
   end
 
   def password=(password)

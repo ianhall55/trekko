@@ -17,7 +17,7 @@
 }
 
 .signup-name-container:last-child {
-  
+
 }
 
 .login-input {
@@ -56,4 +56,27 @@
   height: 60px;
   font-size: 14px;
   color: red;
+}
+
+.session-footer-nav {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: auto;
+  align-items: center;
+}
+
+.oauth {
+  background-color: #3B5998;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 0;
+  border-radius: 8px;
+  height: 30px;
+}
+
+.oauth a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
 }

@@ -92,14 +92,16 @@ class LoginForm extends React.Component {
 
 						<br />
 						<input className="login-submit" type="submit" value="LOGIN" />
-            <br />
-            <button className="google-oauth"><a href="/auth/facebook">Log in with Facebook</a></button>
-            <br />
+          </div>
+          </form>
+          <br />
+          <div className="session-footer-nav">
+            <button className="oauth"><a href="/auth/facebook">Log in with Facebook</a></button>
             <label className="form-footer">
               {"Don't have an account?"} { <Link to="/signup">Sign up</Link> }
             </label>
-					</div>
-				</form>
+            <br />
+          </div>
 			</div>
     );
   }
