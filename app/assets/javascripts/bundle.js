@@ -32444,51 +32444,58 @@ var SignupForm = function (_React$Component) {
               { className: 'session-errors' },
               this.renderErrors()
             ),
-            _react2.default.createElement('br', null),
             _react2.default.createElement(
               'div',
               { className: 'signup-name-container' },
               _react2.default.createElement('input', { type: 'text',
                 value: this.state.first_name,
                 onChange: this.update("first_name"),
-                className: 'login-input',
+                className: 'signup-input',
                 placeholder: 'First Name' }),
               _react2.default.createElement('input', { type: 'text',
                 value: this.state.last_name,
                 onChange: this.update("last_name"),
-                className: 'login-input',
+                className: 'signup-input',
                 placeholder: 'Last Name' })
             ),
-            _react2.default.createElement('br', null),
             _react2.default.createElement('input', { type: 'text',
               value: this.state.email,
               onChange: this.update("email"),
-              className: 'login-input',
+              className: 'signup-input',
               placeholder: 'Email' }),
-            _react2.default.createElement('br', null),
             _react2.default.createElement('input', { type: 'text',
               value: this.state.username,
               onChange: this.update("username"),
-              className: 'login-input',
+              className: 'signup-input',
               placeholder: 'Username' }),
-            _react2.default.createElement('br', null),
             _react2.default.createElement('input', { type: 'password',
               value: this.state.password,
               onChange: this.update("password"),
-              className: 'login-input',
+              className: 'signup-input',
               placeholder: 'Password' }),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('input', { className: 'login-submit', type: 'submit', value: 'SIGN UP' }),
-            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { className: 'login-submit', type: 'submit', value: 'SIGN UP' })
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'session-footer-nav' },
+          _react2.default.createElement(
+            'button',
+            { className: 'oauth' },
             _react2.default.createElement(
-              'label',
-              { className: 'form-footer' },
-              'Already have an account? ',
-              _react2.default.createElement(
-                _reactRouter.Link,
-                { to: '/login' },
-                'Log in'
-              )
+              'a',
+              { href: '/auth/facebook' },
+              'Sign up with Facebook'
+            )
+          ),
+          _react2.default.createElement(
+            'label',
+            { className: 'form-footer' },
+            'Already have an account? ',
+            _react2.default.createElement(
+              _reactRouter.Link,
+              { to: '/login' },
+              'Log in'
             )
           )
         )

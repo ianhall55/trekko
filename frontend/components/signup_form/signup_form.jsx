@@ -74,56 +74,52 @@ class SignupForm extends React.Component {
             <ul className="session-errors">
               { this.renderErrors() }
             </ul>
-            <br />
+
             <div className="signup-name-container">
               <input type="text"
                 value={this.state.first_name}
                 onChange={this.update("first_name")}
-                className="login-input"
+                className="signup-input"
                 placeholder="First Name" />
 
               <input type="text"
                 value={this.state.last_name}
                 onChange={this.update("last_name")}
-                className="login-input"
+                className="signup-input"
                 placeholder="Last Name" />
 
             </div>
-            <br />
+
 							<input type="text"
 								value={this.state.email}
 								onChange={this.update("email")}
-								className="login-input"
+								className="signup-input"
                 placeholder="Email" />
-
-
-            <br />
 
 							<input type="text"
 								value={this.state.username}
 								onChange={this.update("username")}
-								className="login-input"
+								className="signup-input"
                 placeholder="Username" />
 
-
-						<br />
 
 							<input type="password"
 								value={this.state.password}
 								onChange={this.update("password")}
-								className="login-input"
+								className="signup-input"
                 placeholder="Password" />
 
+            <input className="login-submit" type="submit" value="SIGN UP" />
 
-						<br />
-						<input className="login-submit" type="submit" value="SIGN UP" />
-            <br />
-              <label className="form-footer">
-                Already have an account? { <Link to="/login">Log in</Link> }
-              </label>
 
 					</div>
 				</form>
+        <div className="session-footer-nav">
+          <button className="oauth"><a href="/auth/facebook">Sign up with Facebook</a></button>
+            <label className="form-footer">
+              Already have an account? { <Link to="/login">Log in</Link> }
+            </label>
+        </div>
 			</div>
     );
   }

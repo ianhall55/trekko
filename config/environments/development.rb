@@ -38,4 +38,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_controller.asset_host = Proc.new { |source|
+     if source =~ /wp_bundle\.js$/i
+     "http://localhost:8080"
+     end
+   }
 end
