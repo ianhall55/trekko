@@ -43,5 +43,5 @@ Rails.application.configure do
      if source =~ /wp_bundle\.js$/i
      "http://localhost:8080"
      end
-   }
+  }
 end

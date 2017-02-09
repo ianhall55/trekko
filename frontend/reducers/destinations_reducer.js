@@ -15,12 +15,9 @@ const _defaultState = {
 const DestinationsReducer = function(state = _defaultState, action){
   let destinations;
   switch (action.type) {
-    // case DestinationConstants.PENDING_TRIP:
-    //   let pendingDestination = action.trip;
-    //   return merge({}, _defaultState, {pendingDestination});
     case DestinationConstants.RECEIVE_DESTINATIONS_FOR_TRIP:
       destinations = action.destinations;
-      return merge({}, {destinations});
+      return merge({}, state, {destinations});
     case DestinationConstants.RECEIVE_DESTINATION:
       destinations = [...state.destinations, action.destination];
       return merge({}, state, {destinations});

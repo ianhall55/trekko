@@ -18,3 +18,7 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore bundle files
+/app/assets/javascripts/bundle.js
+/app/assets/javascripts/bundle.js.map

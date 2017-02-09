@@ -33569,12 +33569,9 @@ var DestinationsReducer = function DestinationsReducer() {
 
   var destinations = void 0;
   switch (action.type) {
-    // case DestinationConstants.PENDING_TRIP:
-    //   let pendingDestination = action.trip;
-    //   return merge({}, _defaultState, {pendingDestination});
     case _destinations_actions.DestinationConstants.RECEIVE_DESTINATIONS_FOR_TRIP:
       destinations = action.destinations;
-      return (0, _lodash.merge)({}, { destinations: destinations });
+      return (0, _lodash.merge)({}, state, { destinations: destinations });
     case _destinations_actions.DestinationConstants.RECEIVE_DESTINATION:
       destinations = [].concat(_toConsumableArray(state.destinations), [action.destination]);
       return (0, _lodash.merge)({}, state, { destinations: destinations });
