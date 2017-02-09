@@ -18,9 +18,10 @@ export default class Trip extends React.Component {
   }
 
   componentWillUnmount(){
-    if (this.props.trip.id) {
-      this.props.clearTrip();
-    }
+    // if (this.props.trip.id) {
+    // }
+    this.props.clearTrip();
+    this.props.clearDestinations();
   }
 
   componentWillReceiveProps(nextProps){

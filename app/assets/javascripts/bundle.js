@@ -21690,7 +21690,7 @@ module.exports = g;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clearSelectedDestination = exports.selectDestination = exports.clearDestination = exports.fetchDestinationsForTrip = exports.fetchDestination = exports.pendingDestination = exports.receiveDestinationsForTrip = exports.receiveDestination = exports.createDestination = exports.DestinationConstants = undefined;
+exports.clearDestinations = exports.clearSelectedDestination = exports.selectDestination = exports.clearDestination = exports.fetchDestinationsForTrip = exports.fetchDestination = exports.pendingDestination = exports.receiveDestinationsForTrip = exports.receiveDestination = exports.createDestination = exports.DestinationConstants = undefined;
 
 var _types = __webpack_require__(44);
 
@@ -21765,6 +21765,12 @@ var clearSelectedDestination = exports.clearSelectedDestination = function clear
   };
 };
 
+var clearDestinations = exports.clearDestinations = function clearDestinations() {
+  return {
+    type: _types.CLEAR_DESTINATIONS
+  };
+};
+
 /***/ },
 /* 43 */
 /***/ function(module, exports) {
@@ -21802,6 +21808,10 @@ var CENTER_MAP = exports.CENTER_MAP = 'center_map';
 // destinations
 var SELECT_DESTINATION = exports.SELECT_DESTINATION = 'select_destination';
 var CLEAR_SELECTED_DESTINATION = exports.CLEAR_SELECTED_DESTINATION = 'clear_selected_destination';
+var CLEAR_DESTINATIONS = exports.CLEAR_DESTINATIONS = 'clear_destinations';
+
+// places
+var GET_PLACES = exports.GET_PLACES = 'get_places';
 
 /***/ },
 /* 45 */
@@ -23058,14 +23068,18 @@ module.exports = __webpack_require__(234);
 
 /***/ },
 /* 55 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getPlaces = exports.receivePlace = exports.PlaceConstants = undefined;
+
+var _types = __webpack_require__(44);
+
 var PlaceConstants = exports.PlaceConstants = {
   RECEIVE_PLACE: "RECEIVE_PLACE"
 };
@@ -23075,6 +23089,22 @@ var receivePlace = exports.receivePlace = function receivePlace(place) {
     type: PlaceConstants.RECEIVE_PLACE,
     place: place
   };
+};
+
+var getPlaces = exports.getPlaces = function getPlaces(_ref) {
+  var lat = _ref.lat,
+      lng = _ref.lng,
+      type = _ref.type;
+
+  return function (dispatch) {
+    $.ajax({
+      method: 'GET',
+      url: 'api/places',
+      data: { lat: lat, lng: lng, type: type }
+    });
+  };
+
+  type: _types.GET_PLACES, place;
 };
 
 /***/ },
@@ -31759,9 +31789,13 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = __webpack_require__(10);
+
 var _destination_select = __webpack_require__(149);
 
 var _destination_select2 = _interopRequireDefault(_destination_select);
+
+var _actions = __webpack_require__(34);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31771,18 +31805,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var RecommendationsIndex = function (_Component) {
-  _inherits(RecommendationsIndex, _Component);
+var ItineraryIndex = function (_Component) {
+  _inherits(ItineraryIndex, _Component);
 
-  function RecommendationsIndex(props) {
-    _classCallCheck(this, RecommendationsIndex);
+  function ItineraryIndex(props) {
+    _classCallCheck(this, ItineraryIndex);
 
-    return _possibleConstructorReturn(this, (RecommendationsIndex.__proto__ || Object.getPrototypeOf(RecommendationsIndex)).call(this, props));
+    return _possibleConstructorReturn(this, (ItineraryIndex.__proto__ || Object.getPrototypeOf(ItineraryIndex)).call(this, props));
   }
 
-  _createClass(RecommendationsIndex, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
+  _createClass(ItineraryIndex, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var destination = nextProps.selectedDestination;
+
+      this.props.getPlaces(destination);
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -31794,10 +31832,16 @@ var RecommendationsIndex = function (_Component) {
     }
   }]);
 
-  return RecommendationsIndex;
+  return ItineraryIndex;
 }(_react.Component);
 
-exports.default = RecommendationsIndex;
+var mapStateToProps = function mapStateToProps(state) {
+  var selectedDestination = state.destinations.selectedDestination;
+
+  return { selectedDestination: selectedDestination };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { getPlaces: _actions.getPlaces })(ItineraryIndex);
 
 /***/ },
 /* 151 */
@@ -32947,9 +32991,10 @@ var Trip = function (_React$Component) {
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      if (this.props.trip.id) {
-        this.props.clearTrip();
-      }
+      // if (this.props.trip.id) {
+      // }
+      this.props.clearTrip();
+      this.props.clearDestinations();
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -33044,6 +33089,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     clearTrip: function clearTrip() {
       return dispatch((0, _trips_actions.clearTrip)());
+    },
+    clearDestinations: function clearDestinations() {
+      return dispatch((0, _actions.clearDestinations)());
     },
     centerMap: function centerMap(coordinates) {
       return dispatch((0, _actions.centerMap)(coordinates));
@@ -33383,6 +33431,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(53);
 
+var _reduxThunk = __webpack_require__(340);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
 var _session_middleware = __webpack_require__(166);
 
 var _session_middleware2 = _interopRequireDefault(_session_middleware);
@@ -33403,7 +33455,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var logger = (0, _reduxLogger2.default)();
 
-var masterMiddleware = (0, _redux.applyMiddleware)(_session_middleware2.default, _trips_middleware2.default, _destinations_middleware2.default, logger);
+var masterMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, _session_middleware2.default, _trips_middleware2.default, _destinations_middleware2.default, logger);
 
 exports.default = masterMiddleware;
 
@@ -33577,6 +33629,8 @@ var DestinationsReducer = function DestinationsReducer() {
       return (0, _lodash.merge)({}, state, { destinations: destinations });
     case _types.SELECT_DESTINATION:
       return (0, _lodash.merge)({}, state, { selectedDestination: action.payload });
+    case _types.CLEAR_DESTINATIONS:
+      return _defaultState;
     case _types.CLEAR_SELECTED_DESTINATION:
       var newState = (0, _lodash.merge)({}, state);
       newState.selectedDestination = {};
@@ -51369,6 +51423,35 @@ window.signup = _session_actions.signup;
 window.receiveCurrentUser = _session_actions.receiveCurrentUser;
 window.receiveErrors = _session_actions.receiveErrors;
 window.user = { username: 'ian', password: 'password' };
+
+/***/ },
+/* 340 */
+/***/ function(module, exports) {
+
+"use strict";
+'use strict';
+
+exports.__esModule = true;
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+exports['default'] = thunk;
 
 /***/ }
 /******/ ]);

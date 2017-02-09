@@ -1,6 +1,6 @@
 class Api::TripsController < ApplicationController
   before_action :authenticate_request
-  
+
   def index
     @trips = Trip.where(user_id: params[:user_id])
 
@@ -18,8 +18,8 @@ class Api::TripsController < ApplicationController
     @trip.viewport = params[:trip][:viewport]
     @trip.viewport.each {|k,v| @trip.viewport[k] = v.to_f}
     if @trip.save
-      @destination = Destination.create(name: @trip.name, lat: @trip.lat,
-        lng: @trip.lng, trip_id: @trip.id, ord: 1)
+      # @destination = Destination.create(name: @trip.name, lat: @trip.lat,
+      #   lng: @trip.lng, trip_id: @trip.id, ord: 1)
       render :show
     else
       render json: @trip.errors.full_messages, status: 422

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :trips
     resources :destinations
+    resources :places, only: [:index, :show]
   end
 
   get '/auth/:provider/callback', to: 'sessions#oauth'

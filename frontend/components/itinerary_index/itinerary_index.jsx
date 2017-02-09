@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import DestinationSelect from '../destination_select/destination_select';
+import { getPlaces } from '../../actions';
 
-class RecommendationsIndex extends Component {
+class ItineraryIndex extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(nextProps) {
+    const destination = nextProps.selectedDestination
 
+    this.props.getPlaces(destination);
   }
 
   render() {
@@ -20,4 +24,13 @@ class RecommendationsIndex extends Component {
   }
 }
 
-export default RecommendationsIndex;
+const mapStateToProps = state => {
+  const selectedDestination = state.destinations.selectedDestination;
+
+  return { selectedDestination };
+}
+
+export default connect(
+  mapStateToProps,
+  { getPlaces }
+)(ItineraryIndex);

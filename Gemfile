@@ -7,6 +7,7 @@ gem 'binding_of_caller'
 gem 'annotate'
 gem 'bcrypt'
 gem 'figaro'
+gem 'httparty'
 
 # Omniauth facebook for authorization
 gem 'omniauth-facebook'

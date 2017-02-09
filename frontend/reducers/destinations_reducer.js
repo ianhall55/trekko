@@ -1,6 +1,7 @@
 import {
   SELECT_DESTINATION,
-  CLEAR_SELECTED_DESTINATION
+  CLEAR_SELECTED_DESTINATION,
+  CLEAR_DESTINATIONS
 } from '../actions/types';
 import { DestinationConstants } from '../actions/destinations_actions';
 import { merge } from 'lodash';
@@ -23,6 +24,8 @@ const DestinationsReducer = function(state = _defaultState, action){
       return merge({}, state, {destinations});
     case SELECT_DESTINATION:
       return merge({}, state, {selectedDestination: action.payload});
+    case CLEAR_DESTINATIONS:
+      return _defaultState;
     case CLEAR_SELECTED_DESTINATION:
       const newState = merge({}, state);
       newState.selectedDestination = {};
