@@ -1677,7 +1677,7 @@ var CLEAR_DESTINATIONS = exports.CLEAR_DESTINATIONS = 'clear_destinations';
 var RECEIVE_RECOMMENDATIONS = exports.RECEIVE_RECOMMENDATIONS = 'receive_recommendations';
 
 // places of interest
-var RECEIVE_POI_FOR_TRIP = exports.RECEIVE_POI_FOR_TRIP = "receive_poi_for_trip";
+var RECEIVE_POI_FOR_DESTINATION = exports.RECEIVE_POI_FOR_DESTINATION = "receive_poi_for_destination";
 var CREATE_POI = exports.CREATE_POI = 'create_poi';
 var RECEIVE_POI = exports.RECEIVE_POI = 'receive_poi';
 var DELETE_POI = exports.DELETE_POI = 'delete_poi';
@@ -31331,23 +31331,23 @@ var centerMap = exports.centerMap = function centerMap(coordinates) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.receivePOI = exports.createPOI = exports.receivePOIForTrip = exports.fetchPOIForTrip = undefined;
+exports.receivePOI = exports.createPOI = exports.receivePOIForDestination = exports.fetchPOIForDestination = undefined;
 
 var _types = __webpack_require__(16);
 
-var fetchPOIForTrip = exports.fetchPOIForTrip = function fetchPOIForTrip(tripId) {
+var fetchPOIForDestination = exports.fetchPOIForDestination = function fetchPOIForDestination(destinationId) {
   return function (dispatch) {
-    $.get('/api/places_of_interest', { tripId: tripId }).done(function (data) {
-      return dispatch(receivePOIForTrip(data));
+    $.get('/api/places_of_interest', { destinationId: destinationId }).done(function (data) {
+      return dispatch(receivePOIForDestination(data));
     }).fail(function (xhr) {
       return console.log(xhr.responseText);
     });
   };
 };
 
-var receivePOIForTrip = exports.receivePOIForTrip = function receivePOIForTrip(POIs) {
+var receivePOIForDestination = exports.receivePOIForDestination = function receivePOIForDestination(POIs) {
   return {
-    type: _types.RECEIVE_POI_FOR_TRIP,
+    type: _types.RECEIVE_POI_FOR_DESTINATION,
     payload: POIs
   };
 };
@@ -31919,6 +31919,10 @@ var _destination_select = __webpack_require__(88);
 
 var _destination_select2 = _interopRequireDefault(_destination_select);
 
+var _itinerary_list = __webpack_require__(346);
+
+var _itinerary_list2 = _interopRequireDefault(_itinerary_list);
+
 var _actions = __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31941,18 +31945,18 @@ var ItineraryIndex = function (_Component) {
   _createClass(ItineraryIndex, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var trip = this.props.trip;
+      var destination = this.props.selectedDestination;
 
-      if (trip.id) {
-        this.props.fetchPOIForTrip(trip.id);
+      if (destination.id) {
+        this.props.fetchPOIForDestination(destination.id);
       }
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      var trip = nextProps.trip;
+      var destination = nextProps.selectedDestination;
 
-      this.props.fetchPOIForTrip(trip.id);
+      this.props.fetchPOIForDestination(destination.id);
     }
   }, {
     key: 'render',
@@ -31960,7 +31964,8 @@ var ItineraryIndex = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'itinerary-main' },
-        _react2.default.createElement(_destination_select2.default, null)
+        _react2.default.createElement(_destination_select2.default, null),
+        _react2.default.createElement(_itinerary_list2.default, null)
       );
     }
   }]);
@@ -31969,12 +31974,12 @@ var ItineraryIndex = function (_Component) {
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  var trip = state.trips.trip;
+  var selectedDestination = state.destinations.selectedDestination;
 
-  return { trip: trip };
+  return { selectedDestination: selectedDestination };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchPOIForTrip: _actions.fetchPOIForTrip })(ItineraryIndex);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchPOIForDestination: _actions.fetchPOIForDestination })(ItineraryIndex);
 
 /***/ },
 /* 153 */
@@ -33994,7 +33999,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var _defaultState = {
-  placesOfInterest: []
+  placesOfInterest: {
+    restaurants: [],
+    lodgings: [],
+    attractions: []
+  }
 };
 
 exports.default = function () {
@@ -34002,12 +34011,12 @@ exports.default = function () {
   var action = arguments[1];
 
   switch (action.type) {
-    case _types.RECEIVE_POI_FOR_TRIP:
-      return _lodash2.default.merge(state, placesOfInterest);
+    case _types.RECEIVE_POI_FOR_DESTINATION:
+      return { placesOfInterest: action.payload };
     case _types.RECEIVE_POI:
       var placesOfInterest = [].concat(_toConsumableArray(state.placesOfInterest));
       placesOfInterest.push(action.payload);
-      return _lodash2.default.merge(state, placesOfInterest);
+      return _lodash2.default.merge({}, state, placesOfInterest);
     default:
       return state;
   }
@@ -51761,6 +51770,37 @@ window.signup = _session_actions.signup;
 window.receiveCurrentUser = _session_actions.receiveCurrentUser;
 window.receiveErrors = _session_actions.receiveErrors;
 window.user = { username: 'ian', password: 'password' };
+
+/***/ },
+/* 346 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ItineraryList = function ItineraryList() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Itinerary List'
+    )
+  );
+};
+
+exports.default = ItineraryList;
 
 /***/ }
 /******/ ]);

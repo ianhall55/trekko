@@ -12,7 +12,7 @@ export const CLEAR_DESTINATIONS = 'clear_destinations';
 export const RECEIVE_RECOMMENDATIONS = 'receive_recommendations';
 
 // places of interest
-export const RECEIVE_POI_FOR_TRIP = "receive_poi_for_trip";
+export const RECEIVE_POI_FOR_DESTINATION = "receive_poi_for_destination";
 export const CREATE_POI = 'create_poi';
 export const RECEIVE_POI = 'receive_poi';
 export const DELETE_POI = 'delete_poi';

@@ -1,22 +1,22 @@
 import {
-  RECEIVE_POI_FOR_TRIP,
+  RECEIVE_POI_FOR_DESTINATION,
   RECEIVE_POI,
   CREATE_POI,
   DELETE_POI,
   REMOVE_POI
 } from './types';
 
-export const fetchPOIForTrip = tripId => {
+export const fetchPOIForDestination = destinationId => {
   return (dispatch) => {
-    $.get('/api/places_of_interest', {tripId})
-      .done((data) => dispatch(receivePOIForTrip(data)))
+    $.get('/api/places_of_interest', {destinationId})
+      .done((data) => dispatch(receivePOIForDestination(data)))
       .fail((xhr) => console.log(xhr.responseText))
   }
 }
 
-export const receivePOIForTrip = POIs => {
+export const receivePOIForDestination = POIs => {
   return {
-    type: RECEIVE_POI_FOR_TRIP,
+    type: RECEIVE_POI_FOR_DESTINATION,
     payload: POIs
   }
 };
