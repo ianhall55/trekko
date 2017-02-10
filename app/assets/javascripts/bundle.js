@@ -26210,21 +26210,23 @@ var DestinationList = function (_Component) {
           selectedDestination = _props.selectedDestination,
           destinations = _props.destinations;
 
-      var firstDestination = null;
-      var zoom = 7;
-      if (selectedDestination.id) {
-        firstDestination = selectedDestination;
-        zoom = 12;
-      } else {
-        firstDestination = destinations[0];
-        this.props.selectDestination(firstDestination);
+      if (destinations[0]) {
+        var firstDestination = null;
+        var zoom = 7;
+        if (selectedDestination.id) {
+          firstDestination = selectedDestination;
+          zoom = 12;
+        } else {
+          firstDestination = destinations[0];
+          this.props.selectDestination(firstDestination);
+        }
+
+        var _firstDestination = firstDestination,
+            lat = _firstDestination.lat,
+            lng = _firstDestination.lng;
+
+        this.props.centerMap({ lat: lat, lng: lng, zoom: zoom });
       }
-
-      var _firstDestination = firstDestination,
-          lat = _firstDestination.lat,
-          lng = _firstDestination.lng;
-
-      this.props.centerMap({ lat: lat, lng: lng, zoom: zoom });
     }
   }, {
     key: 'componentWillUnmount',
@@ -32901,7 +32903,11 @@ var SplashPage = function (_Component) {
 
       if (place.geometry) {
         this.props.receivePlace(place);
-        this.setState({ locationModalIsOpen: true });
+        if (this.props.currentUser) {
+          this.setState({ locationModalIsOpen: true });
+        } else {
+          this.setState({ signupModalIsOpen: true });
+        }
       } else {
         this.setState({ warningModalIsOpen: true });
         $(".close-modal").select();
@@ -34067,7 +34073,7 @@ var _types = __webpack_require__(16);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _defaultState = {
-  recommendations: {}
+  recommendations: []
 };
 
 var RecommendationsReducer = function RecommendationsReducer() {

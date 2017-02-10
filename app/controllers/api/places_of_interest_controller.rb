@@ -33,7 +33,7 @@ class Api::PlacesOfInterestController < ApplicationController
 
   def place_of_interest_params
     params.require(:place_of_interest)
-      .permit(:id, :name, :google_id, :destination_id, :type, :photo_reference)
+      .permit(:id, :name, :google_id, :lat, :lng, :destination_id, :type, :photo_reference)
   end
 
 end

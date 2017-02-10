@@ -40,7 +40,11 @@ class SplashPage extends Component {
 
     if (place.geometry) {
       this.props.receivePlace(place);
-      this.setState({locationModalIsOpen: true});
+      if (this.props.currentUser) {
+        this.setState({locationModalIsOpen: true});
+      } else {
+        this.setState({signupModalIsOpen: true})
+      }
     } else {
       this.setState({warningModalIsOpen: true});
       $(".close-modal").select();

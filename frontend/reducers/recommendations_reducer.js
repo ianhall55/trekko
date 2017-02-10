@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const _defaultState = {
-  recommendations: {},
+  recommendations: [],
 };
 
 const RecommendationsReducer = function(state = _defaultState, action){

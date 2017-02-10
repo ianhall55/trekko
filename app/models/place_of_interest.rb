@@ -13,7 +13,7 @@
 #
 
 class PlaceOfInterest < ActiveRecord::Base
-  validates :name, :destination_id, presence: true
+  validates :name, :destination_id, :lat, :lng, :type, presence: true
 
   belongs_to :destination
 
