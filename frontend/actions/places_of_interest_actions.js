@@ -3,7 +3,8 @@ import {
   RECEIVE_POI,
   CREATE_POI,
   DELETE_POI,
-  REMOVE_POI
+  REMOVE_POI,
+  CLEAR_POI
 } from './types';
 
 export const fetchPOIForDestination = destinationId => {
@@ -35,3 +36,7 @@ export const receivePOI = POI => {
     payload: POI
   }
 };
+
+export const clearPOI = () => ({
+  type: CLEAR_POI
+})

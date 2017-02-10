@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DestinationSelect from '../destination_select/destination_select';
 import ItineraryList from '../itinerary_list/itinerary_list';
-import { fetchPOIForDestination } from '../../actions';
+import { fetchPOIForDestination, clearPOI } from '../../actions';
 
 class ItineraryIndex extends Component {
   constructor(props) {
@@ -19,6 +19,10 @@ class ItineraryIndex extends Component {
     const destination = nextProps.selectedDestination
 
     this.props.fetchPOIForDestination(destination.id);
+  }
+
+  componentWillUnmount() {
+    this.props.clearPOI()
   }
 
   render() {
@@ -39,5 +43,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchPOIForDestination }
+  { fetchPOIForDestination, clearPOI }
 )(ItineraryIndex);

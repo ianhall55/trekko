@@ -1,9 +1,10 @@
 class Api::PlacesOfInterestController < ApplicationController
 
   def index
-    @restaurants = PlaceOfInterest.where(destination_id: params[:destinationId], type: "Restaurant")
-    @lodgings = PlaceOfInterest.where(destination_id: params[:destinationId], type: "Lodging")
-    @attractions = PlaceOfInterest.where(destination_id: params[:destinationId], type: "Attraction")
+    @places_of_interest = PlaceOfInterest.where(destination_id: params[:destinationId])
+    @restaurants = @places_of_interest.select { |poi| poi.type == "Restaurant" }
+    @lodgings = @places_of_interest.select { |poi| poi.type == "Lodging" }
+    @attractions = @places_of_interest.select { |poi| poi.type == "Attraction" }
 
     render :index
   end

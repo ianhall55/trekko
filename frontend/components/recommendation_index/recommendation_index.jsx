@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DestinationSelect from '../destination_select/destination_select';
-import { getRecommendations } from '../../actions';
+import { getRecommendations, clearRecommendations } from '../../actions';
 
 class RecommendationIndex extends Component {
   constructor(props) {
@@ -18,6 +18,10 @@ class RecommendationIndex extends Component {
     const destination = nextProps.selectedDestination
 
     this.props.getRecommendations(destination);
+  }
+
+  componentWillUnmount() {
+    this.props.clearRecommendations();
   }
 
   render() {
@@ -38,5 +42,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getRecommendations }
+  { getRecommendations, clearRecommendations }
 )(RecommendationIndex);

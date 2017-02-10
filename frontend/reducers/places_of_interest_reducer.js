@@ -1,7 +1,8 @@
 import _ from 'lodash'
 import {
   RECEIVE_POI_FOR_DESTINATION,
-  RECEIVE_POI
+  RECEIVE_POI,
+  CLEAR_POI
 } from '../actions/types';
 
 const _defaultState = {
@@ -20,6 +21,8 @@ export default ( state = _defaultState, action ) => {
       let placesOfInterest = [ ...state.placesOfInterest ];
       placesOfInterest.push(action.payload);
       return _.merge( {}, state, placesOfInterest );
+    case CLEAR_POI:
+      return _defaultState;
     default:
       return state;
   }

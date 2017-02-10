@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import {
-  RECEIVE_RECOMMENDATIONS
+  RECEIVE_RECOMMENDATIONS,
+  CLEAR_RECOMMENDATIONS
 } from '../actions/types';
 
 const _defaultState = {
@@ -11,6 +12,8 @@ const RecommendationsReducer = function(state = _defaultState, action){
   switch (action.type) {
     case RECEIVE_RECOMMENDATIONS:
       return _.merge({}, state, { recommendations: action.payload })
+    case CLEAR_RECOMMENDATIONS:
+      return _defaultState;
     default:
       return state;
   }
