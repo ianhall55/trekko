@@ -1,28 +1,21 @@
-== README
+# Trekko
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# IN DEVELOPMENT
 
-Things you may want to cover:
+[live][heroku]
 
-* Ruby version
+[heroku]: https://trekko.herokuapp.com/
 
-* System dependencies
+This is a travel site for planning your next vacation
 
-* Configuration
+Trekko is built with React + Redux on the front-end and a
+Ruby on Rails server on the backend.
 
-* Database creation
+Uses the Google Maps and Google Places API for providing
+an interactive trip planning experience for users.
 
-* Database initialization
+Also employs facebook oauth and custom methods for authentication.
 
-* How to run the test suite
+![splash](./readme_photos/splash.png)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+![trip_main](./readme_photos/trip_main.png)

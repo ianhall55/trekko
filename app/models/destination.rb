@@ -17,4 +17,7 @@ class Destination < ActiveRecord::Base
 
   belongs_to :trip
 
+  has_many :places_of_interest
+
+  
 end

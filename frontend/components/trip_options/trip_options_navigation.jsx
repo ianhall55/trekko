@@ -26,8 +26,8 @@ class TripOptionsNavigation extends React.Component {
             <button data-option="Itinerary" onClick={this.tripOptionSelected} >
               Itinerary
             </button>
-            <button data-option="Travelers" onClick={this.tripOptionSelected} >
-              Travelers
+            <button data-option="Recommendations" onClick={this.tripOptionSelected} >
+              Recommendations
             </button>
           </nav>
         );
@@ -40,12 +40,12 @@ class TripOptionsNavigation extends React.Component {
             <button disabled >
               Itinerary
             </button>
-            <button data-option="Travelers" onClick={this.tripOptionSelected} >
-              Travelers
+            <button data-option="Recommendations" onClick={this.tripOptionSelected} >
+              Recommendations
             </button>
           </nav>
         );
-      case 'Travelers':
+      case 'Recommendations':
         return(
           <nav className="trip-options-nav">
             <button data-option="Destinations" onClick={this.tripOptionSelected}>
@@ -55,7 +55,7 @@ class TripOptionsNavigation extends React.Component {
               Itinerary
             </button>
             <button disabled >
-              Travelers
+              Recommendations
             </button>
           </nav>
         );

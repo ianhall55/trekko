@@ -6,5 +6,14 @@ export const SELECT_DESTINATION = 'select_destination';
 export const CLEAR_SELECTED_DESTINATION = 'clear_selected_destination';
 export const CLEAR_DESTINATIONS = 'clear_destinations';
 
-// places
-export const GET_PLACES = 'get_places';
+
+
+// recommendations
+export const RECEIVE_RECOMMENDATIONS = 'receive_recommendations';
+
+// places of interest
+export const RECEIVE_POI_FOR_TRIP = "receive_poi_for_trip";
+export const CREATE_POI = 'create_poi';
+export const RECEIVE_POI = 'receive_poi';
+export const DELETE_POI = 'delete_poi';
+export const REMOVE_POI = 'remove_poi';

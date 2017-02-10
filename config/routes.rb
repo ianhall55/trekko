@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :trips
     resources :destinations
     resources :places, only: [:index, :show]
+    resources :places_of_interest
   end
 
   get '/auth/:provider/callback', to: 'sessions#oauth'

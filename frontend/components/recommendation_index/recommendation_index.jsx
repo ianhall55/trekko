@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DestinationSelect from '../destination_select/destination_select';
-import { fetchPOIForTrip } from '../../actions';
+import { getRecommendations } from '../../actions';
 
-class ItineraryIndex extends Component {
+class RecommendationIndex extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    const trip = this.props.trip;
+    const destination = this.props.selectedDestination;
 
-    if (trip.id) { this.props.fetchPOIForTrip(trip.id); }
+    if (destination.id) { this.props.getRecommendations(destination); }
   }
 
   componentWillReceiveProps(nextProps) {
-    const trip = nextProps.trip
+    const destination = nextProps.selectedDestination
 
-    this.props.fetchPOIForTrip(trip.id);
+    this.props.getRecommendations(destination);
   }
 
   render() {
@@ -31,12 +31,12 @@ class ItineraryIndex extends Component {
 }
 
 const mapStateToProps = state => {
-  const trip = state.trips.trip;
+  const selectedDestination = state.destinations.selectedDestination;
 
-  return { trip };
+  return { selectedDestination };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchPOIForTrip }
-)(ItineraryIndex);
+  { getRecommendations }
+)(RecommendationIndex);

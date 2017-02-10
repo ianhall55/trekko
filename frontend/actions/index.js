@@ -5,3 +5,5 @@ export * from './session_actions';
 export * from './trip_options_actions';
 export * from './trips_actions';
 export * from './map_actions';
+export * from './recommendations_actions';
+export * from './places_of_interest_actions';

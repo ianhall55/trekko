@@ -9,9 +9,11 @@ class Api::PlacesController < ApplicationController
       response = HTTParty.get(url)
     end
 
-    debugger
-    
-  end
+    render(
+      json: response["results"],
+      status: 200
+    )
 
+  end
 
 end

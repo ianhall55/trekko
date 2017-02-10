@@ -1,16 +1,16 @@
+import _ from 'lodash';
 import { PlaceConstants } from '../actions/places_actions';
-import { merge } from 'lodash';
 import {hashHistory} from 'react-router';
 
 const _defaultState = {
-  currentPlace: {}
+  currentPlace: {},
 };
 
 const PlacesReducer = function(state = _defaultState, action){
   switch (action.type) {
     case PlaceConstants.RECEIVE_PLACE:
       const currentPlace = action.place;
-      return merge({}, _defaultState, {currentPlace});
+      return _.merge({}, _defaultState, {currentPlace});
     default:
       return state;
   }

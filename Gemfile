@@ -8,6 +8,7 @@ gem 'annotate'
 gem 'bcrypt'
 gem 'figaro'
 gem 'httparty'
+gem 'cloudinary'
 
 # Omniauth facebook for authorization
 gem 'omniauth-facebook'
