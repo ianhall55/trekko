@@ -11,7 +11,7 @@ const _defaultState = {
 const RecommendationsReducer = function(state = _defaultState, action){
   switch (action.type) {
     case RECEIVE_RECOMMENDATIONS:
-      return _.merge({}, state, { recommendations: action.payload })
+      return { recommendations: action.payload };
     case CLEAR_RECOMMENDATIONS:
       return _defaultState;
     default:
