@@ -32002,9 +32002,121 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchPOIForDestina
 
 /***/ },
 /* 153 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (5:4)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mclass\u001b[39m \u001b[33mItineraryList\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mComponent\u001b[39m {\n \u001b[90m 4 | \u001b[39m  \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m    \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m   | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33mh3\u001b[39m\u001b[33m>\u001b[39m\u001b[33mRestaurants\u001b[39m\u001b[33m:\u001b[39m \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mh3\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 7 | \u001b[39m\n \u001b[90m 8 | \u001b[39m    \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n");
+"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(8);
+
+var _poi_item = __webpack_require__(352);
+
+var _poi_item2 = _interopRequireDefault(_poi_item);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ItineraryList = function (_Component) {
+  _inherits(ItineraryList, _Component);
+
+  function ItineraryList(props) {
+    _classCallCheck(this, ItineraryList);
+
+    var _this = _possibleConstructorReturn(this, (ItineraryList.__proto__ || Object.getPrototypeOf(ItineraryList)).call(this, props));
+
+    _this.renderPOI = _this.renderPOI.bind(_this);
+    return _this;
+  }
+
+  _createClass(ItineraryList, [{
+    key: 'renderPOI',
+    value: function renderPOI(type) {
+      var placesOfInterest = this.props.placesOfInterest[type];
+      var poiLines = [];
+      placesOfInterest.forEach(function (POI) {
+        poiLines.push(_react2.default.createElement(_poi_item2.default, { POI: POI }));
+      });
+
+      return poiLines;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'itinerary-list' },
+        _react2.default.createElement(
+          'div',
+          { className: 'itin-sub-index' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Restaurants: '
+          ),
+          _react2.default.createElement(
+            'ul',
+            null,
+            this.renderPOI("restaurants")
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'itin-sub-index' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Lodging: '
+          ),
+          _react2.default.createElement(
+            'ul',
+            null,
+            this.renderPOI("lodgings")
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'itin-sub-index' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Attractions: '
+          ),
+          _react2.default.createElement(
+            'ul',
+            null,
+            this.renderPOI("attractions")
+          )
+        )
+      );
+    }
+  }]);
+
+  return ItineraryList;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  var placesOfInterest = state.placesOfInterest.placesOfInterest;
+
+  return { placesOfInterest: placesOfInterest };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, {})(ItineraryList);
 
 /***/ },
 /* 154 */
@@ -52326,6 +52438,40 @@ window.signup = _session_actions.signup;
 window.receiveCurrentUser = _session_actions.receiveCurrentUser;
 window.receiveErrors = _session_actions.receiveErrors;
 window.user = { username: 'ian', password: 'password' };
+
+/***/ },
+/* 352 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var POIItem = function POIItem(_ref) {
+  var POI = _ref.POI;
+  var name = POI.name;
+
+  return _react2.default.createElement(
+    'li',
+    null,
+    _react2.default.createElement(
+      'span',
+      null,
+      name
+    )
+  );
+};
+
+exports.default = POIItem;
 
 /***/ }
 /******/ ]);
