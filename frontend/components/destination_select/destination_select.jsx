@@ -10,24 +10,26 @@ class DestinationList extends Component {
 
   componentDidMount() {
     const { selectedDestination, destinations } = this.props;
-    if ( destinations[0] ) {
-      let firstDestination = null;
-      let zoom = 7;
-      if (selectedDestination.id) {
-        firstDestination = selectedDestination;
-        zoom = 12;
-      } else {
-        firstDestination = destinations[0];
-        this.props.selectDestination(firstDestination);
-      }
+    if ( !selectedDestination.id ) {
+      if ( destinations[0] ) {
+        let firstDestination = null;
+        let zoom = 7;
+        if (selectedDestination.id) {
+          firstDestination = selectedDestination;
+          zoom = 12;
+        } else {
+          firstDestination = destinations[0];
+          this.props.selectDestination(firstDestination);
+        }
 
-      let { lat, lng } = firstDestination;
-      this.props.centerMap({lat: lat, lng: lng, zoom: zoom});
+        let { lat, lng } = firstDestination;
+        this.props.centerMap({lat: lat, lng: lng, zoom: zoom});
+      }
     }
   }
 
   componentWillUnmount() {
-    this.props.clearSelectedDestination();
+    // this.props.clearSelectedDestination();
   }
 
   destinationChanged(e) {

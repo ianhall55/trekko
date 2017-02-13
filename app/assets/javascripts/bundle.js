@@ -26212,28 +26212,30 @@ var DestinationList = function (_Component) {
           selectedDestination = _props.selectedDestination,
           destinations = _props.destinations;
 
-      if (destinations[0]) {
-        var firstDestination = null;
-        var zoom = 7;
-        if (selectedDestination.id) {
-          firstDestination = selectedDestination;
-          zoom = 12;
-        } else {
-          firstDestination = destinations[0];
-          this.props.selectDestination(firstDestination);
+      if (!selectedDestination.id) {
+        if (destinations[0]) {
+          var firstDestination = null;
+          var zoom = 7;
+          if (selectedDestination.id) {
+            firstDestination = selectedDestination;
+            zoom = 12;
+          } else {
+            firstDestination = destinations[0];
+            this.props.selectDestination(firstDestination);
+          }
+
+          var _firstDestination = firstDestination,
+              lat = _firstDestination.lat,
+              lng = _firstDestination.lng;
+
+          this.props.centerMap({ lat: lat, lng: lng, zoom: zoom });
         }
-
-        var _firstDestination = firstDestination,
-            lat = _firstDestination.lat,
-            lng = _firstDestination.lng;
-
-        this.props.centerMap({ lat: lat, lng: lng, zoom: zoom });
       }
     }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      this.props.clearSelectedDestination();
+      // this.props.clearSelectedDestination();
     }
   }, {
     key: 'destinationChanged',
@@ -32049,7 +32051,7 @@ var ItineraryList = function (_Component) {
       var placesOfInterest = this.props.placesOfInterest[type];
       var poiLines = [];
       placesOfInterest.forEach(function (POI) {
-        poiLines.push(_react2.default.createElement(_poi_item2.default, { POI: POI }));
+        poiLines.push(_react2.default.createElement(_poi_item2.default, { key: POI.id, POI: POI }));
       });
 
       return poiLines;

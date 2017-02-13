@@ -14,7 +14,7 @@ class ItineraryList extends Component {
     const poiLines = [];
     placesOfInterest.forEach((POI) => {
       poiLines.push(
-        <POIItem POI={POI} />
+        <POIItem key={ POI.id } POI={ POI } />
       );
     });
 
