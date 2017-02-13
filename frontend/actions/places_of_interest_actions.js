@@ -25,7 +25,7 @@ export const receivePOIForDestination = POIs => {
 export const createPOI = POI => {
   return (dispatch) => {
     $.post('/api/places_of_interest', { "place_of_interest": POI })
-      .done((data) => dispatch(receivePOI(data)))
+      .done((data) => console.log(data))
       .fail((xhr) => console.log(xhr.responseText))
   }
 };

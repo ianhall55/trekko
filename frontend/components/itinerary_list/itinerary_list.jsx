@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ItineraryList = () => {
+class ItineraryList extends Component {
   return (
     <div>
-      <h3>Itinerary List</h3>
+      <h3>Restaurants: </h3>
+
     </div>
   );
 }

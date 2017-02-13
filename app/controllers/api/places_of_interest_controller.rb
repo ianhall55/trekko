@@ -16,6 +16,7 @@ class Api::PlacesOfInterestController < ApplicationController
 
   def create
     @place_of_interest = PlaceOfInterest.new(place_of_interest_params)
+
     if @place_of_interest.save
       render :show
     else
