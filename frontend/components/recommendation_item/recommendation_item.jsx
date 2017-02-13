@@ -15,12 +15,12 @@ class RecommendationItem extends Component {
     const destination = this.props.destination;
     const { lat, lng } = geometry.location;
     let photo_reference;
-    if ( photos[0] ) {
+    if ( photos ) {
       photo_reference = photos[0].photo_reference;
     };
     const place_of_interest = { name, destination_id: destination.id, google_id: place_id,
       photo_reference, type: "Restaurant", lat, lng };
-  
+
     this.props.createPOI( place_of_interest );
   }
 

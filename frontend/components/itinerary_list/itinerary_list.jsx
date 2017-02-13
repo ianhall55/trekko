@@ -26,24 +26,30 @@ class ItineraryList extends Component {
     return (
       <div className="itinerary-list" >
         <div className="itin-sub-index" >
-          <h3>Restaurants: </h3>
-          <ul>
-            {this.renderPOI("restaurants")}
-          </ul>
+          <h3>Restaurants</h3>
+          <div className="itin-sect">
+            <ul>
+              {this.renderPOI("restaurants")}
+            </ul>
+          </div>
         </div>
 
         <div className="itin-sub-index" >
-          <h3>Lodging: </h3>
-          <ul>
-            {this.renderPOI("lodgings")}
-          </ul>
+          <h3>Lodging</h3>
+          <div className="itin-sect">
+            <ul>
+              {this.renderPOI("lodgings")}
+            </ul>
+          </div>
         </div>
 
         <div className="itin-sub-index" >
-          <h3>Attractions: </h3>
-          <ul>
-            {this.renderPOI("attractions")}
-          </ul>
+          <h3>Attractions</h3>
+          <div className="itin-sect">
+            <ul>
+              {this.renderPOI("attractions")}
+            </ul>
+          </div>
         </div>
       </div>
     );
