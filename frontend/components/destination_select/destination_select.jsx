@@ -10,6 +10,7 @@ class DestinationList extends Component {
 
   componentDidMount() {
     const { selectedDestination, destinations } = this.props;
+
     if ( !selectedDestination.id ) {
       if ( destinations[0] ) {
         let firstDestination = null;
@@ -25,6 +26,9 @@ class DestinationList extends Component {
         let { lat, lng } = firstDestination;
         this.props.centerMap({lat: lat, lng: lng, zoom: zoom});
       }
+    } else {
+      let { lat, lng } = selectedDestination;
+      this.props.centerMap({lat: lat, lng: lng, zoom: 12});
     }
   }
 

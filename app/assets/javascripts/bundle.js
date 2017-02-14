@@ -26212,6 +26212,7 @@ var DestinationList = function (_Component) {
           selectedDestination = _props.selectedDestination,
           destinations = _props.destinations;
 
+
       if (!selectedDestination.id) {
         if (destinations[0]) {
           var firstDestination = null;
@@ -26230,6 +26231,11 @@ var DestinationList = function (_Component) {
 
           this.props.centerMap({ lat: lat, lng: lng, zoom: zoom });
         }
+      } else {
+        var _lat = selectedDestination.lat,
+            _lng = selectedDestination.lng;
+
+        this.props.centerMap({ lat: _lat, lng: _lng, zoom: 12 });
       }
     }
   }, {
