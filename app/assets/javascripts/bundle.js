@@ -31729,13 +31729,13 @@ var corkboardItem = function corkboardItem(_ref) {
     _react2.default.createElement(
       _reactRouter.Link,
       { to: '/plan-trip/' + trip.id },
-      _react2.default.createElement('div', {
-        className: 'res-image-rec',
-        style: backgroundPhotoStyle
-      }),
       _react2.default.createElement(
         'div',
-        null,
+        { className: 'cork-item' },
+        _react2.default.createElement('div', {
+          className: 'res-image-cork',
+          style: backgroundPhotoStyle
+        }),
         _react2.default.createElement(
           'h3',
           null,
@@ -32603,9 +32603,9 @@ var POIItem = function POIItem(_ref) {
 
   return _react2.default.createElement(
     "li",
-    null,
+    { className: "poi-item" },
     _react2.default.createElement(
-      "span",
+      "h3",
       null,
       name
     ),
@@ -32644,6 +32644,10 @@ var _destination_select2 = _interopRequireDefault(_destination_select);
 var _recommendation_list = __webpack_require__(161);
 
 var _recommendation_list2 = _interopRequireDefault(_recommendation_list);
+
+var _recommendation_select = __webpack_require__(162);
+
+var _recommendation_select2 = _interopRequireDefault(_recommendation_select);
 
 var _actions = __webpack_require__(19);
 
@@ -32691,7 +32695,12 @@ var RecommendationIndex = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'itinerary-main' },
-        _react2.default.createElement(_destination_select2.default, null),
+        _react2.default.createElement(
+          'div',
+          { className: 'rec-header' },
+          _react2.default.createElement(_destination_select2.default, null),
+          _react2.default.createElement(_recommendation_select2.default, null)
+        ),
         _react2.default.createElement(_recommendation_list2.default, null)
       );
     }
@@ -32874,10 +32883,6 @@ var _react = __webpack_require__(1);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(7);
-
-var _recommendation_select = __webpack_require__(162);
-
-var _recommendation_select2 = _interopRequireDefault(_recommendation_select);
 
 var _recommendation_item = __webpack_require__(160);
 

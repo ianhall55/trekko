@@ -53,22 +53,32 @@
 }
 
 
-.itin-sub-index ul li {
+.poi-item {
   /*border: 1px solid lightgrey;*/
   min-width: 250px;
   height: 100%;
-  margin: 5px;
+  margin: 0px 5px;
   min-height: 155px;
   font-size: 14px;
   align-content: center;
 }
 
-.itin-sub-index ul li:hover {
+.poi-item:hover {
   cursor: pointer;
   border-color: darkgrey;
 }
 
 .res-image-itin {
-  height: 170px;
+  height: 160px;
   width: 100%;
+}
+
+.poi-item h3 {
+    height: 40px;
+    vertical-align: bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5px;
+    font-size: 18px;
 }

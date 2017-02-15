@@ -5,7 +5,7 @@ class Api::PlacesController < ApplicationController
     if params[:lat]
       lat, lng = params[:lat], params[:lng]
       type = 'restaurant'
-      url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&radius=500&type=#{type}&key=#{ENV['MAP_KEY']}"
+      url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&radius=1000&key=#{ENV['MAP_KEY']}"
       response = HTTParty.get(url)
     end
 

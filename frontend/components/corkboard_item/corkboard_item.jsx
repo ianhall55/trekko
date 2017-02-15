@@ -20,11 +20,11 @@ const corkboardItem = ({ trip }) => {
   return (
     <li>
       {<Link to={`/plan-trip/${trip.id}`}>
-      <div
-        className="res-image-rec"
-        style={ backgroundPhotoStyle }
+      <div className="cork-item" >
+        <div
+          className="res-image-cork"
+          style={ backgroundPhotoStyle }
         />
-      <div>
         <h3>{trip.name}</h3>
       </div>
     </Link>}

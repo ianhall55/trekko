@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DestinationSelect from '../destination_select/destination_select';
 import RecommendationList from '../recommendation_list/recommendation_list';
+import RecommendationSelect from '../recommendation_select/recommendation_select';
 import { getRecommendations, clearRecommendations } from '../../actions';
 
 class RecommendationIndex extends Component {
@@ -28,7 +29,10 @@ class RecommendationIndex extends Component {
   render() {
     return (
       <div className="itinerary-main" >
-        <DestinationSelect />
+        <div className="rec-header">
+          <DestinationSelect />
+          <RecommendationSelect />
+        </div>
         <RecommendationList />
       </div>
     );

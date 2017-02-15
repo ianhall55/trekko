@@ -35,14 +35,19 @@
 }
 
 .res-image-rec {
-  height: 165px;
+  height: 155px;
   width: 95%;
   margin: 0 auto;
 }
 
 .rec-item h3 {
-  margin: 3px 10px;
+  margin: 12px 10px 0px;
   font-size: 18px;
+  height: 28px;
+  line-height: 22px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: flex-end; */
 }
 
 .rec-item span {

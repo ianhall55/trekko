@@ -15,8 +15,8 @@ const POIItem = ({ POI }) => {
   }
 
   return (
-    <li>
-      <span>{name}</span>
+    <li className="poi-item">
+      <h3>{name}</h3>
       <div
         className="res-image-itin"
         style={ backgroundPhotoStyle }

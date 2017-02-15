@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RecommendationSelect from '../recommendation_select/recommendation_select';
 import RecommendationItem from '../recommendation_item/recommendation_item';
 
 class RecommendationList extends Component {
