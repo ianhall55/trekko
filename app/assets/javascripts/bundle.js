@@ -32590,7 +32590,7 @@ var POIItem = function POIItem(_ref) {
       name
     ),
     _react2.default.createElement("div", {
-      className: "res-image",
+      className: "res-image-itin",
       style: backgroundPhotoStyle
     })
   );
@@ -32764,8 +32764,23 @@ var RecommendationItem = function (_Component) {
 
       var _props$recommendation2 = this.props.recommendation,
           name = _props$recommendation2.name,
-          rating = _props$recommendation2.rating;
+          rating = _props$recommendation2.rating,
+          photos = _props$recommendation2.photos;
 
+      var photo_url = void 0;
+      if (photos) {
+        var photo_ref = photos[0].photo_reference;
+        photo_url = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photo_ref + '&key=AIzaSyB4l9vEKNdn38idNWvyHRylKtPCEt5OYYs';
+      } else {
+        photo_url = "";
+      }
+
+      var backgroundPhotoStyle = {
+        backgroundImage: 'url(' + photo_url + ')',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      };
 
       return _react2.default.createElement(
         'li',
@@ -32778,6 +32793,10 @@ var RecommendationItem = function (_Component) {
             null,
             name
           ),
+          _react2.default.createElement('div', {
+            className: 'res-image-rec',
+            style: backgroundPhotoStyle
+          }),
           _react2.default.createElement(
             'span',
             null,
@@ -32823,6 +32842,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
@@ -32839,29 +32860,67 @@ var _recommendation_item2 = _interopRequireDefault(_recommendation_item);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var RecommendationList = function RecommendationList(_ref) {
-  var recommendations = _ref.recommendations;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-  var recommendationLines = [];
-  recommendations.forEach(function (recommendation) {
-    recommendationLines.push(_react2.default.createElement(_recommendation_item2.default, { key: recommendation.id, recommendation: recommendation }));
-  });
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-  return _react2.default.createElement(
-    'div',
-    { className: 'rec-content' },
-    _react2.default.createElement(
-      'div',
-      { className: 'rec-list' },
-      _react2.default.createElement(
-        'ul',
-        null,
-        recommendationLines
-      )
-    )
-  );
-};
+var RecommendationList = function (_Component) {
+  _inherits(RecommendationList, _Component);
+
+  function RecommendationList(props) {
+    _classCallCheck(this, RecommendationList);
+
+    var _this = _possibleConstructorReturn(this, (RecommendationList.__proto__ || Object.getPrototypeOf(RecommendationList)).call(this, props));
+
+    _this.renderRecommendationLines = _this.renderRecommendationLines.bind(_this);
+    return _this;
+  }
+
+  _createClass(RecommendationList, [{
+    key: 'renderRecommendationLines',
+    value: function renderRecommendationLines() {
+      var recommendations = this.props.recommendations;
+      var recommendationLines = [];
+      recommendations.forEach(function (recommendation) {
+        recommendationLines.push(_react2.default.createElement(_recommendation_item2.default, { key: recommendation.id, recommendation: recommendation }));
+      });
+      return recommendationLines;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.props.recommendations.length > 0) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'rec-content' },
+          _react2.default.createElement(
+            'div',
+            { className: 'rec-list' },
+            _react2.default.createElement(
+              'ul',
+              null,
+              this.renderRecommendationLines()
+            )
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: 'rec-content' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Loading...'
+          )
+        );
+      }
+    }
+  }]);
+
+  return RecommendationList;
+}(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
   var recommendations = state.recommendations.recommendations;

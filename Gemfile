@@ -9,6 +9,7 @@ gem 'bcrypt'
 gem 'figaro'
 gem 'httparty'
 gem 'cloudinary'
+gem 'puma'
 
 # Omniauth facebook for authorization
 gem 'omniauth-facebook'

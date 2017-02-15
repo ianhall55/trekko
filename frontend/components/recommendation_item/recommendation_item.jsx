@@ -25,12 +25,30 @@ class RecommendationItem extends Component {
   }
 
   render() {
-    const { name, rating  } = this.props.recommendation;
+    const { name, rating, photos } = this.props.recommendation;
+    let photo_url
+    if ( photos ) {
+      const photo_ref = photos[0].photo_reference;
+      photo_url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo_ref}&key=AIzaSyB4l9vEKNdn38idNWvyHRylKtPCEt5OYYs`;
+    } else {
+      photo_url = "";
+    }
+
+    const backgroundPhotoStyle = {
+      backgroundImage: `url(${photo_url})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    };
 
     return (
       <li>
         <div className="rec-item" >
           <h3>{ name }</h3>
+          <div
+            className="res-image-rec"
+            style={ backgroundPhotoStyle }
+          />
           <span>
             <StarRatingComponent
               name="airbnb-rating"

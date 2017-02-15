@@ -18,7 +18,7 @@ const POIItem = ({ POI }) => {
     <li>
       <span>{name}</span>
       <div
-        className="res-image"
+        className="res-image-itin"
         style={ backgroundPhotoStyle }
       />
     </li>
