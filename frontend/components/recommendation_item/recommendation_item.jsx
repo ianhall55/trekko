@@ -10,7 +10,7 @@ class RecommendationItem extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  handleClick(e) {
     const { name, place_id, photos, geometry, rating  } = this.props.recommendation;
     const destination = this.props.destination;
     const { lat, lng } = geometry.location;
@@ -21,11 +21,15 @@ class RecommendationItem extends Component {
     const place_of_interest = { name, destination_id: destination.id, google_id: place_id,
       photo_reference, type: "Restaurant", lat, lng };
 
+    let btn = $(`#${e.target.id}`);
+    btn.attr("disabled", true);
+    btn.attr("background-color", "lightgrey")
+
     this.props.createPOI( place_of_interest );
   }
 
   render() {
-    const { name, rating, photos } = this.props.recommendation;
+    const { name, rating, photos, place_id } = this.props.recommendation;
     let photo_url
     if ( photos ) {
       const photo_ref = photos[0].photo_reference;
@@ -56,7 +60,7 @@ class RecommendationItem extends Component {
               value={rating || 0}
               />
           </span>
-          <button onClick={ () => this.handleClick() }>Add to Itinerary</button>
+          <button id={this.props.id} onClick={ (e) => this.handleClick(e) }>Add to Itinerary</button>
         </div>
       </li>
     );

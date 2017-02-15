@@ -48,6 +48,7 @@
 .rec-item span {
   margin-left: 10px;
   height: 23px;
+  z-index: -1;
 }
 
 .rec-item button {

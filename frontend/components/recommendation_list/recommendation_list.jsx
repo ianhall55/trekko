@@ -13,9 +13,9 @@ class RecommendationList extends Component {
   renderRecommendationLines() {
     const recommendations = this.props.recommendations;
     const recommendationLines = [];
-    recommendations.forEach((recommendation) => {
+    recommendations.forEach((recommendation, idx) => {
       recommendationLines.push(
-        <RecommendationItem key={recommendation.id} recommendation={recommendation} />
+        <RecommendationItem key={recommendation.id} id={`btn-${idx}`} recommendation={recommendation} />
       );
     });
     return recommendationLines;

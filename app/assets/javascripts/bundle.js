@@ -31707,12 +31707,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var corkboardItem = function corkboardItem(_ref) {
   var trip = _ref.trip;
+
+  var photo_url = void 0;
+
+  if (trip.photo_reference) {
+    photo_url = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + trip.photo_reference + '&key=AIzaSyB4l9vEKNdn38idNWvyHRylKtPCEt5OYYs';
+  } else {
+    photo_url = "";
+  }
+
+  var backgroundPhotoStyle = {
+    backgroundImage: 'url(' + photo_url + ')',
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
+  };
+
   return _react2.default.createElement(
     'li',
     null,
     _react2.default.createElement(
       _reactRouter.Link,
       { to: '/plan-trip/' + trip.id },
+      _react2.default.createElement('div', {
+        className: 'res-image-rec',
+        style: backgroundPhotoStyle
+      }),
       _react2.default.createElement(
         'div',
         null,
@@ -32735,7 +32755,7 @@ var RecommendationItem = function (_Component) {
 
   _createClass(RecommendationItem, [{
     key: 'handleClick',
-    value: function handleClick() {
+    value: function handleClick(e) {
       var _props$recommendation = this.props.recommendation,
           name = _props$recommendation.name,
           place_id = _props$recommendation.place_id,
@@ -32755,6 +32775,10 @@ var RecommendationItem = function (_Component) {
       var place_of_interest = { name: name, destination_id: destination.id, google_id: place_id,
         photo_reference: photo_reference, type: "Restaurant", lat: lat, lng: lng };
 
+      var btn = $('#' + e.target.id);
+      btn.attr("disabled", true);
+      btn.attr("background-color", "lightgrey");
+
       this.props.createPOI(place_of_interest);
     }
   }, {
@@ -32765,7 +32789,8 @@ var RecommendationItem = function (_Component) {
       var _props$recommendation2 = this.props.recommendation,
           name = _props$recommendation2.name,
           rating = _props$recommendation2.rating,
-          photos = _props$recommendation2.photos;
+          photos = _props$recommendation2.photos,
+          place_id = _props$recommendation2.place_id;
 
       var photo_url = void 0;
       if (photos) {
@@ -32808,8 +32833,8 @@ var RecommendationItem = function (_Component) {
           ),
           _react2.default.createElement(
             'button',
-            { onClick: function onClick() {
-                return _this2.handleClick();
+            { id: this.props.id, onClick: function onClick(e) {
+                return _this2.handleClick(e);
               } },
             'Add to Itinerary'
           )
@@ -32883,8 +32908,8 @@ var RecommendationList = function (_Component) {
     value: function renderRecommendationLines() {
       var recommendations = this.props.recommendations;
       var recommendationLines = [];
-      recommendations.forEach(function (recommendation) {
-        recommendationLines.push(_react2.default.createElement(_recommendation_item2.default, { key: recommendation.id, recommendation: recommendation }));
+      recommendations.forEach(function (recommendation, idx) {
+        recommendationLines.push(_react2.default.createElement(_recommendation_item2.default, { key: recommendation.id, id: 'btn-' + idx, recommendation: recommendation }));
       });
       return recommendationLines;
     }
@@ -33491,17 +33516,25 @@ var SplashPage = function (_Component) {
     value: function createTrip(e) {
       e.preventDefault();
 
+      var _props$place = this.props.place,
+          name = _props$place.name,
+          geometry = _props$place.geometry,
+          place_id = _props$place.place_id;
+      var viewport = geometry.viewport;
+
+
       var trip = {
-        name: this.props.place.name,
-        lat: this.props.place.geometry.location.lat(),
-        lng: this.props.place.geometry.location.lng(),
+        name: name,
+        lat: geometry.location.lat(),
+        lng: geometry.location.lng(),
         viewport: {
-          north: this.props.place.geometry.viewport.f.b,
-          south: this.props.place.geometry.viewport.f.f,
-          east: this.props.place.geometry.viewport.b.f,
-          west: this.props.place.geometry.viewport.b.b
+          north: viewport.f.b,
+          south: viewport.f.f,
+          east: viewport.b.f,
+          west: viewport.b.b
         },
-        user_id: undefined
+        user_id: undefined,
+        place_id: place_id
       };
       if (this.props.currentUser) {
         trip.user_id = this.props.currentUser.id;

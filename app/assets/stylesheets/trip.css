@@ -25,7 +25,8 @@
 .trip-options {
   margin-left: 40%;
   width: 60%;
-  /*height: 200vh;*/
+  min-width: 520px;
+  border-left: 1px solid lightgrey;
 }
 
 #trip-places-input {

@@ -79,18 +79,22 @@ class SplashPage extends Component {
 
   createTrip(e){
     e.preventDefault();
+    
+    const { name, geometry, place_id } = this.props.place
+    const { viewport } = geometry;
 
     let trip = {
-      name: this.props.place.name,
-      lat: this.props.place.geometry.location.lat(),
-      lng: this.props.place.geometry.location.lng(),
+      name: name,
+      lat: geometry.location.lat(),
+      lng: geometry.location.lng(),
       viewport: {
-        north: this.props.place.geometry.viewport.f.b,
-        south: this.props.place.geometry.viewport.f.f,
-        east: this.props.place.geometry.viewport.b.f,
-        west: this.props.place.geometry.viewport.b.b
+        north: viewport.f.b,
+        south: viewport.f.f,
+        east: viewport.b.f,
+        west: viewport.b.b
       },
-      user_id: undefined
+      user_id: undefined,
+      place_id: place_id
     };
     if (this.props.currentUser) {
       trip.user_id = this.props.currentUser.id;
