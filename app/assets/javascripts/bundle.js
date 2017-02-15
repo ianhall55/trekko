@@ -32965,7 +32965,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, {})(RecommendationLi
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -32976,6 +32976,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRadioGroup = __webpack_require__(353);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32994,42 +32996,36 @@ var RecommendationSelect = function (_Component) {
     var _this = _possibleConstructorReturn(this, (RecommendationSelect.__proto__ || Object.getPrototypeOf(RecommendationSelect)).call(this, props));
 
     _this.state = {
-      recType: "Restaurants"
+      recType: ""
     };
+
+    _this.handleRadioChange = _this.handleRadioChange.bind(_this);
     return _this;
   }
 
   _createClass(RecommendationSelect, [{
-    key: "handleRadioChange",
-    value: function handleRadioChange(e) {
-      e.preventDefault();
-      debugger;
-      var val = e.target.value;
-      if (val === "Restaurants") {
-        this.setState({ recType: "Restaurants" });
-      } else if (val === "Lodging") {
-        this.setState({ recType: "Lodging" });
-      } else if (val === "Attractions") {
-        this.setState({ recType: "Attractions" });
-      }
+    key: 'handleRadioChange',
+    value: function handleRadioChange(type) {
+      this.setState({ recType: type });
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
-      debugger;
       var recType = this.state.recType;
+
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
-        _react2.default.createElement("input", { type: "radio", name: "rec-type", value: "Restaurants", checked: recType === "Restaurants",
-          onChange: this.handleRadioChange.bind(this) }),
-        "Restaurants",
-        _react2.default.createElement("input", { type: "radio", name: "rec-type", value: "Lodging", checked: recType === "Lodging",
-          onChange: this.handleRadioChange.bind(this) }),
-        "Lodging",
-        _react2.default.createElement("input", { type: "radio", name: "rec-type", value: "Attractions", checked: recType === "Attractions",
-          onChange: this.handleRadioChange.bind(this) }),
-        "Attractions"
+        _react2.default.createElement(
+          _reactRadioGroup.RadioGroup,
+          { name: 'rec-type', selectedValue: this.state.recType, onChange: this.handleRadioChange },
+          _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Restaurants' }),
+          'Restaurants',
+          _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Lodging' }),
+          'Lodging',
+          _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Attractions' }),
+          'Attractions'
+        )
       );
     }
   }]);
@@ -52605,6 +52601,109 @@ window.signup = _session_actions.signup;
 window.receiveCurrentUser = _session_actions.receiveCurrentUser;
 window.receiveErrors = _session_actions.receiveErrors;
 window.user = { username: 'ian', password: 'password' };
+
+/***/ },
+/* 353 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var Radio = _react2['default'].createClass({
+  displayName: 'Radio',
+
+  contextTypes: {
+    radioGroup: _react2['default'].PropTypes.object
+  },
+
+  render: function render() {
+    var _context$radioGroup = this.context.radioGroup;
+    var name = _context$radioGroup.name;
+    var selectedValue = _context$radioGroup.selectedValue;
+    var onChange = _context$radioGroup.onChange;
+
+    var optional = {};
+    if (selectedValue !== undefined) {
+      optional.checked = this.props.value === selectedValue;
+    }
+    if (typeof onChange === 'function') {
+      optional.onChange = onChange.bind(null, this.props.value);
+    }
+
+    return _react2['default'].createElement('input', _extends({}, this.props, {
+      type: 'radio',
+      name: name
+    }, optional));
+  }
+});
+
+exports.Radio = Radio;
+var RadioGroup = _react2['default'].createClass({
+  displayName: 'RadioGroup',
+
+  propTypes: {
+    name: _react.PropTypes.string,
+    selectedValue: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number, _react.PropTypes.bool]),
+    onChange: _react.PropTypes.func,
+    children: _react.PropTypes.node.isRequired,
+    Component: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.func, _react.PropTypes.object])
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      Component: "div"
+    };
+  },
+
+  childContextTypes: {
+    radioGroup: _react2['default'].PropTypes.object
+  },
+
+  getChildContext: function getChildContext() {
+    var _props = this.props;
+    var name = _props.name;
+    var selectedValue = _props.selectedValue;
+    var onChange = _props.onChange;
+
+    return {
+      radioGroup: {
+        name: name, selectedValue: selectedValue, onChange: onChange
+      }
+    };
+  },
+
+  render: function render() {
+    var _props2 = this.props;
+    var Component = _props2.Component;
+    var name = _props2.name;
+    var selectedValue = _props2.selectedValue;
+    var onChange = _props2.onChange;
+    var children = _props2.children;
+
+    var rest = _objectWithoutProperties(_props2, ['Component', 'name', 'selectedValue', 'onChange', 'children']);
+
+    return _react2['default'].createElement(
+      Component,
+      rest,
+      children
+    );
+  }
+});
+exports.RadioGroup = RadioGroup;
 
 /***/ }
 /******/ ]);
