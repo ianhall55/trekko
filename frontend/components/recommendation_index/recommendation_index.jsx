@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DestinationSelect from '../destination_select/destination_select';
 import RecommendationList from '../recommendation_list/recommendation_list';
 import RecommendationSelect from '../recommendation_select/recommendation_select';
-import { getRecommendations, clearRecommendations } from '../../actions';
+import { startGetRecommendations, getRecommendations, clearRecommendations } from '../../actions';
 
 class RecommendationIndex extends Component {
   constructor(props) {
@@ -11,15 +11,22 @@ class RecommendationIndex extends Component {
   }
 
   componentDidMount() {
-    const destination = this.props.selectedDestination;
+    debugger;
+    const { lat, lng } = this.props.selectedDestination;
+    const type = this.props.recommendationType;
 
-    if (destination.id) { this.props.getRecommendations(destination); }
+    if (lat) { this.props.getRecommendations({ lat, lng, type}); }
   }
 
   componentWillReceiveProps(nextProps) {
+    const currentDestination = this.props.selectedDestination
     const destination = nextProps.selectedDestination
-
-    this.props.getRecommendations(destination);
+    const type = nextProps.recommendationType;
+    if (destination.id != currentDestination.id || type != this.props.recommendationType) {
+      const { lat, lng } = destination;
+      this.props.startGetRecommendations();
+      this.props.getRecommendations({ lat, lng, type });
+    }
   }
 
   componentWillUnmount() {
@@ -41,11 +48,12 @@ class RecommendationIndex extends Component {
 
 const mapStateToProps = state => {
   const selectedDestination = state.destinations.selectedDestination;
+  const recommendationType = state.recommendations.recommendationType;
 
-  return { selectedDestination };
+  return { selectedDestination, recommendationType };
 }
 
 export default connect(
   mapStateToProps,
-  { getRecommendations, clearRecommendations }
+  { startGetRecommendations, getRecommendations, clearRecommendations }
 )(RecommendationIndex);

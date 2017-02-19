@@ -21,7 +21,7 @@ class RecommendationList extends Component {
   }
 
   render() {
-    if (this.props.recommendations.length > 0) {
+    if (!this.props.loading) {
       return (
         <div className="rec-content">
           <div className="rec-list">
@@ -44,8 +44,10 @@ class RecommendationList extends Component {
 
 const mapStateToProps = (state) => {
   const recommendations = state.recommendations.recommendations;
+  const loading = state.recommendations.loading;
+  const recommendationType = state.recommendations.recommendationType;
 
-  return { recommendations };
+  return { recommendations, loading, recommendationType };
 }
 
 export default connect(

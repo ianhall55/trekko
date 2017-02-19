@@ -11,6 +11,8 @@ export const CLEAR_DESTINATIONS = 'clear_destinations';
 // recommendations
 export const RECEIVE_RECOMMENDATIONS = 'receive_recommendations';
 export const CLEAR_RECOMMENDATIONS = 'clear_recommendations';
+export const START_GET_RECOMMENDATIONS = 'start_get_recommendations';
+export const REC_TYPE_CHANGE = 'rec_type_change';
 
 // places of interest
 export const RECEIVE_POI_FOR_DESTINATION = "receive_poi_for_destination";

@@ -1,6 +1,8 @@
 import {
   RECEIVE_RECOMMENDATIONS,
-  CLEAR_RECOMMENDATIONS
+  CLEAR_RECOMMENDATIONS,
+  START_GET_RECOMMENDATIONS,
+  REC_TYPE_CHANGE
 } from './types';
 
 export const getRecommendations = ({ lat, lng, type }) => {
@@ -20,4 +22,13 @@ export const receiveRecommendations = recommendations => {
 
 export const clearRecommendations = () => ({
   type: CLEAR_RECOMMENDATIONS
+});
+
+export const startGetRecommendations = () => ({
+  type: START_GET_RECOMMENDATIONS
+});
+
+export const recTypeChange = ( recommendationType ) => ({
+  type: REC_TYPE_CHANGE,
+  payload: recommendationType
 });
