@@ -20,9 +20,9 @@ class RecommendationSelect extends Component {
     return (
       <div >
         <RadioGroup name="rec-type" selectedValue={recType} onChange={this.handleRadioChange}>
-          <Radio value="Restaurants" />Restaurants
+          <Radio value="Restaurant" />Restaurants
           <Radio value="Lodging" />Lodging
-          <Radio value="Attractions" />Attractions
+          <Radio value="Attraction" />Attractions
         </RadioGroup>
       </div>
     )

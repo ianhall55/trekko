@@ -8,16 +8,16 @@ import {
 
 const _defaultState = {
   recommendations: [],
-  recommendationType: "Restaurants",
+  recommendationType: "Restaurant",
   loading: true
 };
 
 const RecommendationsReducer = function(state = _defaultState, action){
   switch (action.type) {
     case START_GET_RECOMMENDATIONS:
-      return { loading: true };
+      return { loading: true, recommendationType: state.recommendationType };
     case RECEIVE_RECOMMENDATIONS:
-      return { recommendations: action.payload, loading: false };
+      return { recommendations: action.payload, loading: false, recommendationType: state.recommendationType };
     case REC_TYPE_CHANGE:
       return { loading: true, recommendationType: action.payload }
     case CLEAR_RECOMMENDATIONS:

@@ -1657,6 +1657,125 @@ module.exports = ReactCurrentOwner;
 
 /***/ },
 /* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _destinations_actions = __webpack_require__(43);
+
+Object.keys(_destinations_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _destinations_actions[key];
+    }
+  });
+});
+
+var _forms_actions = __webpack_require__(35);
+
+Object.keys(_forms_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _forms_actions[key];
+    }
+  });
+});
+
+var _places_actions = __webpack_require__(55);
+
+Object.keys(_places_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _places_actions[key];
+    }
+  });
+});
+
+var _session_actions = __webpack_require__(25);
+
+Object.keys(_session_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _session_actions[key];
+    }
+  });
+});
+
+var _trip_options_actions = __webpack_require__(44);
+
+Object.keys(_trip_options_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _trip_options_actions[key];
+    }
+  });
+});
+
+var _trips_actions = __webpack_require__(20);
+
+Object.keys(_trips_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _trips_actions[key];
+    }
+  });
+});
+
+var _map_actions = __webpack_require__(142);
+
+Object.keys(_map_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _map_actions[key];
+    }
+  });
+});
+
+var _recommendations_actions = __webpack_require__(144);
+
+Object.keys(_recommendations_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _recommendations_actions[key];
+    }
+  });
+});
+
+var _places_of_interest_actions = __webpack_require__(143);
+
+Object.keys(_places_of_interest_actions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _places_of_interest_actions[key];
+    }
+  });
+});
+
+/***/ },
+/* 17 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1688,7 +1807,7 @@ var REMOVE_POI = exports.REMOVE_POI = 'remove_poi';
 var CLEAR_POI = exports.CLEAR_POI = 'clear_poi';
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -18779,7 +18898,7 @@ var CLEAR_POI = exports.CLEAR_POI = 'clear_poi';
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42), __webpack_require__(139)(module)))
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19051,125 +19170,6 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
   }
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _destinations_actions = __webpack_require__(43);
-
-Object.keys(_destinations_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _destinations_actions[key];
-    }
-  });
-});
-
-var _forms_actions = __webpack_require__(35);
-
-Object.keys(_forms_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _forms_actions[key];
-    }
-  });
-});
-
-var _places_actions = __webpack_require__(55);
-
-Object.keys(_places_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _places_actions[key];
-    }
-  });
-});
-
-var _session_actions = __webpack_require__(25);
-
-Object.keys(_session_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _session_actions[key];
-    }
-  });
-});
-
-var _trip_options_actions = __webpack_require__(44);
-
-Object.keys(_trip_options_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _trip_options_actions[key];
-    }
-  });
-});
-
-var _trips_actions = __webpack_require__(20);
-
-Object.keys(_trips_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _trips_actions[key];
-    }
-  });
-});
-
-var _map_actions = __webpack_require__(142);
-
-Object.keys(_map_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _map_actions[key];
-    }
-  });
-});
-
-var _recommendations_actions = __webpack_require__(144);
-
-Object.keys(_recommendations_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _recommendations_actions[key];
-    }
-  });
-});
-
-var _places_of_interest_actions = __webpack_require__(143);
-
-Object.keys(_places_of_interest_actions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _places_of_interest_actions[key];
-    }
-  });
-});
 
 /***/ },
 /* 20 */
@@ -21625,7 +21625,7 @@ module.exports = ReactInstanceMap;
 
 'use strict';
 
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 var getEventTarget = __webpack_require__(74);
 
@@ -21748,7 +21748,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.clearDestinations = exports.clearSelectedDestination = exports.selectDestination = exports.clearDestination = exports.fetchDestinationsForTrip = exports.fetchDestination = exports.pendingDestination = exports.receiveDestinationsForTrip = exports.receiveDestination = exports.createDestination = exports.DestinationConstants = undefined;
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 var DestinationConstants = exports.DestinationConstants = {
   CREATE_DESTINATION: "CREATE_DESTINATION",
@@ -23113,7 +23113,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.receivePlacesForDestination = exports.getPlaces = exports.receivePlace = exports.PlaceConstants = undefined;
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 var PlaceConstants = exports.PlaceConstants = {
   RECEIVE_PLACE: "RECEIVE_PLACE"
@@ -26188,7 +26188,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(7);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31324,7 +31324,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.centerMap = undefined;
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 var centerMap = exports.centerMap = function centerMap(coordinates) {
   return {
@@ -31345,7 +31345,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.clearPOI = exports.receivePOI = exports.createPOI = exports.receivePOIForDestination = exports.fetchPOIForDestination = undefined;
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 var fetchPOIForDestination = exports.fetchPOIForDestination = function fetchPOIForDestination(destinationId) {
   return function (dispatch) {
@@ -31399,7 +31399,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.recTypeChange = exports.startGetRecommendations = exports.clearRecommendations = exports.receiveRecommendations = exports.getRecommendations = undefined;
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 var getRecommendations = exports.getRecommendations = function getRecommendations(_ref) {
   var lat = _ref.lat,
@@ -31786,7 +31786,7 @@ var _destination_item = __webpack_require__(151);
 
 var _destination_item2 = _interopRequireDefault(_destination_item);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31908,7 +31908,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(7);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31980,7 +31980,7 @@ var _itinerary_list = __webpack_require__(153);
 
 var _itinerary_list2 = _interopRequireDefault(_itinerary_list);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32664,7 +32664,7 @@ var _recommendation_select = __webpack_require__(162);
 
 var _recommendation_select2 = _interopRequireDefault(_recommendation_select);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32686,7 +32686,7 @@ var RecommendationIndex = function (_Component) {
   _createClass(RecommendationIndex, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      debugger;
+      // debugger;
       var _props$selectedDestin = this.props.selectedDestination,
           lat = _props$selectedDestin.lat,
           lng = _props$selectedDestin.lng;
@@ -32703,6 +32703,7 @@ var RecommendationIndex = function (_Component) {
       var currentDestination = this.props.selectedDestination;
       var destination = nextProps.selectedDestination;
       var type = nextProps.recommendationType;
+      // debugger;
       if (destination.id != currentDestination.id || type != this.props.recommendationType) {
         var lat = destination.lat,
             lng = destination.lng;
@@ -32768,7 +32769,7 @@ var _reactStarRatingComponent = __webpack_require__(329);
 
 var _reactStarRatingComponent2 = _interopRequireDefault(_reactStarRatingComponent);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32800,6 +32801,7 @@ var RecommendationItem = function (_Component) {
           geometry = _props$recommendation.geometry,
           rating = _props$recommendation.rating;
 
+      var type = this.props.recommendationType;
       var destination = this.props.destination;
       var _geometry$location = geometry.location,
           lat = _geometry$location.lat,
@@ -32810,7 +32812,7 @@ var RecommendationItem = function (_Component) {
         photo_reference = photos[0].photo_reference;
       };
       var place_of_interest = { name: name, destination_id: destination.id, google_id: place_id,
-        photo_reference: photo_reference, type: "Restaurant", lat: lat, lng: lng };
+        photo_reference: photo_reference, type: type, lat: lat, lng: lng };
 
       var btn = $('#' + e.target.id);
       btn.attr("disabled", true);
@@ -32887,8 +32889,9 @@ var RecommendationItem = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   var destination = state.destinations.selectedDestination;
+  var recommendationType = state.recommendations.recommendationType;
 
-  return { destination: destination };
+  return { destination: destination, recommendationType: recommendationType };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, { createPOI: _actions.createPOI })(RecommendationItem);
@@ -33011,7 +33014,7 @@ var _reactRedux = __webpack_require__(7);
 
 var _reactRadioGroup = __webpack_require__(308);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33049,11 +33052,11 @@ var RecommendationSelect = function (_Component) {
         _react2.default.createElement(
           _reactRadioGroup.RadioGroup,
           { name: 'rec-type', selectedValue: recType, onChange: this.handleRadioChange },
-          _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Restaurants' }),
+          _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Restaurant' }),
           'Restaurants',
           _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Lodging' }),
           'Lodging',
-          _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Attractions' }),
+          _react2.default.createElement(_reactRadioGroup.Radio, { value: 'Attraction' }),
           'Attractions'
         )
       );
@@ -33901,7 +33904,7 @@ var _trip2 = _interopRequireDefault(_trip);
 
 var _trips_actions = __webpack_require__(20);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34367,7 +34370,7 @@ var _destinations_actions = __webpack_require__(43);
 
 var _trip_api_util = __webpack_require__(189);
 
-var _actions = __webpack_require__(19);
+var _actions = __webpack_require__(16);
 
 var _reactRouter = __webpack_require__(10);
 
@@ -34429,11 +34432,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 var _destinations_actions = __webpack_require__(43);
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _reactRouter = __webpack_require__(10);
 
@@ -34485,7 +34488,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _forms_actions = __webpack_require__(35);
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _defaultState = {
   login: { errors: [] },
@@ -34554,11 +34557,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34596,11 +34599,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34643,7 +34646,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -34683,17 +34686,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _types = __webpack_require__(16);
+var _types = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _defaultState = {
   recommendations: [],
-  recommendationType: "Restaurants",
+  recommendationType: "Restaurant",
   loading: true
 };
 
@@ -34703,9 +34706,9 @@ var RecommendationsReducer = function RecommendationsReducer() {
 
   switch (action.type) {
     case _types.START_GET_RECOMMENDATIONS:
-      return { loading: true };
+      return { loading: true, recommendationType: state.recommendationType };
     case _types.RECEIVE_RECOMMENDATIONS:
-      return { recommendations: action.payload, loading: false };
+      return { recommendations: action.payload, loading: false, recommendationType: state.recommendationType };
     case _types.REC_TYPE_CHANGE:
       return { loading: true, recommendationType: action.payload };
     case _types.CLEAR_RECOMMENDATIONS:
@@ -34795,7 +34798,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _session_actions = __webpack_require__(25);
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _reactRouter = __webpack_require__(10);
 
@@ -34833,7 +34836,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _trip_options_actions = __webpack_require__(44);
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _reactRouter = __webpack_require__(10);
 
@@ -34867,7 +34870,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _trips_actions = __webpack_require__(20);
 
-var _lodash = __webpack_require__(17);
+var _lodash = __webpack_require__(18);
 
 var _reactRouter = __webpack_require__(10);
 
@@ -38509,7 +38512,7 @@ var EventPropagators = __webpack_require__(38);
 var ExecutionEnvironment = __webpack_require__(8);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactUpdates = __webpack_require__(14);
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 var getEventTarget = __webpack_require__(74);
 var isEventSupported = __webpack_require__(75);
@@ -45471,7 +45474,7 @@ var EventPropagators = __webpack_require__(38);
 var ExecutionEnvironment = __webpack_require__(8);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactInputSelection = __webpack_require__(108);
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 var getActiveElement = __webpack_require__(91);
 var isTextInputElement = __webpack_require__(118);
@@ -45671,7 +45674,7 @@ var EventPropagators = __webpack_require__(38);
 var ReactDOMComponentTree = __webpack_require__(6);
 var SyntheticAnimationEvent = __webpack_require__(281);
 var SyntheticClipboardEvent = __webpack_require__(282);
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 var SyntheticFocusEvent = __webpack_require__(285);
 var SyntheticKeyboardEvent = __webpack_require__(287);
 var SyntheticMouseEvent = __webpack_require__(49);
@@ -45897,7 +45900,7 @@ module.exports = SimpleEventPlugin;
 
 'use strict';
 
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 /**
  * @interface Event
@@ -45941,7 +45944,7 @@ module.exports = SyntheticAnimationEvent;
 
 'use strict';
 
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 /**
  * @interface Event
@@ -45984,7 +45987,7 @@ module.exports = SyntheticClipboardEvent;
 
 'use strict';
 
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 /**
  * @interface Event
@@ -46107,7 +46110,7 @@ module.exports = SyntheticFocusEvent;
 
 'use strict';
 
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 /**
  * @interface Event
@@ -46288,7 +46291,7 @@ module.exports = SyntheticTouchEvent;
 
 'use strict';
 
-var SyntheticEvent = __webpack_require__(18);
+var SyntheticEvent = __webpack_require__(19);
 
 /**
  * @interface Event

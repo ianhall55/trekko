@@ -12,6 +12,7 @@ class RecommendationItem extends Component {
 
   handleClick(e) {
     const { name, place_id, photos, geometry, rating  } = this.props.recommendation;
+    const type = this.props.recommendationType;
     const destination = this.props.destination;
     const { lat, lng } = geometry.location;
     let photo_reference;
@@ -19,7 +20,7 @@ class RecommendationItem extends Component {
       photo_reference = photos[0].photo_reference;
     };
     const place_of_interest = { name, destination_id: destination.id, google_id: place_id,
-      photo_reference, type: "Restaurant", lat, lng };
+      photo_reference, type, lat, lng };
 
     let btn = $(`#${e.target.id}`);
     btn.attr("disabled", true);
@@ -69,8 +70,9 @@ class RecommendationItem extends Component {
 
 const mapStateToProps = state => {
   const destination = state.destinations.selectedDestination;
+  const recommendationType = state.recommendations.recommendationType;
 
-  return { destination };
+  return { destination, recommendationType };
 }
 
 export default connect(

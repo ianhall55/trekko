@@ -11,7 +11,7 @@ class RecommendationIndex extends Component {
   }
 
   componentDidMount() {
-    debugger;
+    // debugger;
     const { lat, lng } = this.props.selectedDestination;
     const type = this.props.recommendationType;
 
@@ -22,6 +22,7 @@ class RecommendationIndex extends Component {
     const currentDestination = this.props.selectedDestination
     const destination = nextProps.selectedDestination
     const type = nextProps.recommendationType;
+    // debugger;
     if (destination.id != currentDestination.id || type != this.props.recommendationType) {
       const { lat, lng } = destination;
       this.props.startGetRecommendations();
